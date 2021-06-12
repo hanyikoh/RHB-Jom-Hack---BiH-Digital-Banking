@@ -37,6 +37,12 @@ class CompanyDetailForm(FlaskForm):
     contactNumber = StringField(label='Contact Number', validators=[DataRequired()])
     contactEmail = StringField(label='Contact Email', validators=[DataRequired()])
     website = StringField(label='Website (Optional)')
+
+    introduction = TextAreaField(label='Introduce yourself and tell us something interesting about you?', validators=[DataRequired()])
+    why = TextAreaField(label='Why do you do what you do?', validators=[DataRequired()])
+    problems = TextAreaField(label='What problems are you solving?', validators=[DataRequired()])
+    benefit = TextAreaField(label='Who specifically will benefit from this (ICA/ICP)?', validators=[DataRequired()])
+    solving = TextAreaField(label='How are you solving this/their problems?', validators=[DataRequired()])
     
 class StrategyForm(FlaskForm):
     valuePreposition = TextAreaField(label='What your value proposition is?', validators=[DataRequired()])

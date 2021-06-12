@@ -260,8 +260,8 @@ justify-content: space-between;" x-data="{
                                 <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="account"><strong>Account</strong></li>
-                                    <li id="personal"><strong>Personal</strong></li>
-                                    <li id="payment"><strong>Image</strong></li>
+                                    <li id="personal"><strong>Business Model Strategy</strong></li>
+                                    <li id="payment"><strong>Business Model Strategy Video Upload</strong></li>
                                     <li id="confirm"><strong>Finish</strong></li>
                                 </ul>
                                 <div class="progress">
@@ -362,6 +362,26 @@ justify-content: space-between;" x-data="{
                                             </div>
                                             <div class="col-5">
                                                 <h2 class="steps">Step 2 - 4</h2>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                {{ form.introduction.label(class="float-left") }}
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                {{ form.why.label(class="float-left") }}
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                {{ form.problems.label(class="float-left") }}
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                {{ form.benefit.label(class="float-left") }}
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                {{ form.solving.label(class="float-left") }}
+                                                <input type="text" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div> <input type="button" name="next" class="next action-button" value="Next" />
