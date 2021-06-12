@@ -202,13 +202,11 @@
                         for (var k = 0; k <= years; k++) {
                             for (var i = 0; i < months; i++) {
                                 var row =
-                                    "<tr> <input type='hidden' name='Registration_Tag[]'' value='" +
-                                     + "'>" +
+                                    "<tr>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='flex items-center'>" +
                                     "<div class='ml-4'>" +
                                     "<div class='text-sm font-medium text-gray-900'>" +
-                                     +
                                     "</div>" +
                                     "</div>" +
                                     "</div>" +
@@ -222,14 +220,14 @@
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='flex flex-wrap my-auto mb-6'>" +
                                     "<div class='w-full px-3'>" +
-                                    "<input id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='Equipment_Cert[]'>" +
+                                    "<input id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='income_"+i+"'>" +
                                     "</div>" +
                                     "</div>" +
                                     "</td>" +
                                     "<td class='py-4 whitespace-nowrap text-sm text-gray-500'>" +
                                     "<div class='flex flex-wrap my-auto mb-6'>" +
                                     "<div class='w-full px-3'>" +
-                                    "<input id='expenses"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='Equipment_Cert[]'>" +
+                                    "<input id='expenses"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='expense_"+i+"'>" +
                                     "</div>" +
                                     "</div>" +
                                     "</td>" +
