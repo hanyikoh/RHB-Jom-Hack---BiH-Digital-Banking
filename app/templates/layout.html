@@ -198,19 +198,11 @@
             months += currentDate.getMonth();
             if (months > 0) {
                         $("#Expenses_Table").empty();
-                        $('#prediction-submit').empty();
+                        $('#prediction-submit').remove();
                         for (var k = 0; k <= years; k++) {
                             for (var i = 0; i < months; i++) {
                                 var row =
                                     "<tr>" +
-                                    "<td class='px-6 py-4 whitespace-nowrap'>" +
-                                    "<div class='flex items-center'>" +
-                                    "<div class='ml-4'>" +
-                                    "<div class='text-sm font-medium text-gray-900'>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</td>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='text-sm text-gray-500'>" +
                                     "<input id='date"+i+"'"+"value='"+(parseInt(startMonth)+parseInt(i)+1).toString()+"\\"+(parseInt(establishmentDate.getFullYear())+parseInt(k)).toString()+"'"+  "type='text' disabled placeholder='' name='dates'>" +
@@ -219,7 +211,7 @@
                                     "</td>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='flex flex-wrap my-auto mb-6'>" +
-                                    "<div class='w-full px-3'>" +
+                                    "<div class='w-full'>" +
                                     "<input id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='income_"+i+"'>" +
                                     "</div>" +
                                     "</div>" +
@@ -241,7 +233,6 @@
                             months -= 12;
                         }
                             $('#prediction-form form').append('<button id="prediction-submit" type="submit" class="mt-3 btn btn-secondary">submit</button>')
-
                     }
             // return months <= 0 ? 0 : months;
         });
