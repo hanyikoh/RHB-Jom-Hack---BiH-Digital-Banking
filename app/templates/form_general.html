@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% block title %}
+    BiH Service
+{% endblock %}
+{% block content %}
+<div class="row py-4 justify-content-md-center">
+    <div class="col-sm-6">
+        <div class="card" style="height: 1050px">
+            <div class="card-body align-items-center">
+                <h2 class="card-title mt-2">APPLY FOR BANK LOAN</h2>
+                <p>Kindly fill in all fields in order to go to the next step.</p>
+                
+                <h3 class="card-title mt-2">General Client Information</h3>
+
+                <form class="align-items-center">
+
+                    <div class="col-auto mb-4">
+                        {{ form.companyName.label() }}
+                        <input type="text" class="form-control" placeholder="Company Full Name">
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        {{ form.companyAddress1.label() }}
+                        <input type="text" class="form-control" placeholder="Address 1">
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        {{ form.companyAddress2.label() }}
+                        <input type="text" class="form-control" placeholder="Address 2">
+                    </div>
+
+                    <div class="col-auto mb-4 row g-3 align-items-auto">
+                        <div class="col-md-2">
+                            {{ form.city.label() }}
+                            <input type="text" class="form-control" placeholder="City">
+                        </div>
+                        <div class="col-md-2">
+                            {{ form.zip.label() }}
+                            <input type="text" class="form-control" placeholder="Zip">
+                        </div>
+                        <div class="col-md-2">
+                            {{ form.country.label() }}
+                            <input type="text" class="form-control" placeholder="Country">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        {{ form.businessType.label() }}
+                        <br>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+                            <option selected>Business Type</option>
+                            <option value="1">Sole Proprietorship</option>
+                            <option value="2">Partnership</option>
+                            <option value="3">Private Limited Company</option>
+                            <option value="4">Company Limited By Guarantee</option>
+                            <option value="5">Unlimited Company</option>
+                            <option value="6">Public Limited Company</option>
+                            <option value="7">Limited Liability Partnership</option>
+                            <option value="8">Foreign Company</option>
+                        </select>
+
+                        <div class="float-right mb-4">
+                            <button type="submit" class="btn btn-danger">Need Help?</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        {{ form.contactNumber.label() }}
+                        <input type="text" class="form-control" placeholder="Contact Number">
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        {{ form.contactEmail.label() }}
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        {{ form.website.label() }}
+                        <input type="text" class="form-control" placeholder="Website Address">
+                    </div>
+
+                    <br>
+
+                    <div class="float-right col-auto mb-4">
+<<<<<<< HEAD
+                        <a href="/main/form/2" class="btn btn-success btn-lg" name="btnAddMore">
+                            Next
+                        </a>
+=======
+                        <a href="/main/form/sales" class="btn btn-success btn-lg" name="btnNext">Next</a>
+>>>>>>> 4ed49a2b4defbb9ba0357a2c22d76c6e763ab112
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

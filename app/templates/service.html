@@ -1,0 +1,51 @@
+
+{% extends 'layout.html' %}
+{% block title %}
+    BiH Service
+{% endblock %}
+{% block content %}
+<!--
+<div class="row service-banner">
+    <img src="{{url_for('static', filename='slide1.jpg')}}" style="height: 50vh;" class="d-block w-100" alt="...">
+</div>
+-->
+<div class="row py-4 px-2">
+    <div class="col-sm-4">
+      <div class="card" style="height: 454px">
+        <div class="card-body">
+            <div class="card-image">
+                <img src="{{url_for('static', filename='audit.png')}}" style="height:270px" class="d-block w-100" alt="...">
+              </div>
+          <h5 class="card-title mt-2">Audit</h5>
+          <p class="card-text">An independent audit is the foundation for decision-making in the capital markets.</p>
+          <a href="/main" class="btn btn-primary">Know More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card" style="height: 454px">
+        <div class="card-body" style="height: 100%;">
+          <div class="card-image">
+            <img src="{{url_for('static', filename='cashflow.jpg')}}" style="height:270px" class="d-block w-100" alt="...">
+          </div>
+          <h5 class="card-title mt-2">Cashflow Prediction</h5>
+          <p class="card-text">We help to estimate or forecast of a companys future financial position.
+        </p>
+          <a href="#" class="btn btn-primary">Know More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="height: 454px">
+          <div class="card-body">
+            <div class="card-image">
+                <img src="{{url_for('static', filename='advisory.jpg')}}" style="height:270px" class="d-block w-100" alt="...">
+              </div>
+            <h5 class="card-title mt-2">Advisory</h5>
+            <p class="card-text">Organizational success is driven by sound decision making and effective execution</p>
+            <a href="#" class="btn btn-primary">Know More</a>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

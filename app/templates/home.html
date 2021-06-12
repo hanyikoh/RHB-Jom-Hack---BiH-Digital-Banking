@@ -1,0 +1,20 @@
+
+{% extends 'layout.html' %}
+{% block title %}
+    BiH Home Page
+{% endblock %}
+{% block content %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="{{url_for('static', filename='slide1.jpg')}}" style="height: 100vh-64px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+            <img src="{{url_for('static', filename='slide2.jpg')}}" style="height: 100vh-64px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+            <img src="{{url_for('static', filename='slide3.jpg')}}" style="height: 100vh-64px;" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+{% endblock %}

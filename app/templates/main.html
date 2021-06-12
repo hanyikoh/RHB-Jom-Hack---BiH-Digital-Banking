@@ -1,0 +1,577 @@
+{% extends 'layout.html' %}
+{% block title %}
+BiH Service
+{% endblock %}
+{% block content %}
+<!-- <div class="row py-4 justify-content-md-center">
+    <div class="col-sm-4">
+        <div class="card" style="height: 454px">
+            <div class="card-body">
+                <div class="card-image">
+                    <img src="{{url_for('static', filename='audit2.jpg')}}" style="width:405px; height:270px" class="d-block w-100" alt="...">
+                </div>
+                <h5 class="card-title mt-2">Apply for Bank Loan</h5>
+                <p class="card-text">Fill in forms to verify your applicability.</p>
+                
+                <div class="float-right">
+                    <a href="/main/form/1" class="btn btn-success">Start Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="wrapper">
+    <!-- Navbar -->
+
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="container emp-profile rounded-lg shadow-lg">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="profile-img">
+                                        <img src="./static/google.png" alt="" />
+                                        <div class="file btn btn-lg btn-primary">
+                                            Change Photo
+                                            <input type="file" name="file" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="profile-head">
+                                        <h5>
+                                            Google
+                                        </h5>
+                                        <h6>
+                                            Web Developer and Designer
+                                        </h6>
+                                        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                                    role="tab" aria-controls="home" aria-selected="true">About</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                                                    role="tab" aria-controls="profile"
+                                                    aria-selected="false">Application</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="/main/form/1" class="p-2 text-white btn-secondary rounded"
+                                        name="btnAddMore">
+                                        Apply for bank loan
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="profile-work">
+                                        <p>WORK LINK</p>
+                                        <a href="">Website Link</a><br />
+                                        <a href="">Bootsnipp Profile</a><br />
+                                        <a href="">Bootply Profile</a>
+                                        <p>SKILLS</p>
+                                        <a href="">Web Designer</a><br />
+                                        <a href="">Web Developer</a><br />
+                                        <a href="">WordPress</a><br />
+                                        <a href="">WooCommerce</a><br />
+                                        <a href="">PHP, .Net</a><br />
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="tab-content profile-tab" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>SSM Registration Id</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>1231231223</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Director Name</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Kshiti Ghelani</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Company Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>google@gmail.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Phone</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>123 456 7890</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Business Nature</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Information Technology</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            <div class="row">
+                                                <div class="loanProgress">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <i class="fa fa-check"></i>
+                                                            <p>Form Submitted</p>
+                                                        </li>
+                                                        <li>
+                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <i class="fa fa-check"></i>
+                                                            <p>In Progress</p>
+                                                        </li>
+                                                        <li>
+                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <i class="fa fa-refresh"></i>
+                                                            <p>Approve</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label>Your Bio</label><br />
+                                                    <p>Your detail description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0">Expenses and Income</h1>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+
+                <div class="container w-full bg-white rounded-lg shadow-lg p-4">
+                    <div class="flex flex-wrap -mx-3 mb-6 col-start-3 col-span-8 row-start-2">
+                        <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="grid-first-name">
+                                Company Establishment Date
+                            </label>
+                            <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                                id="Company_Registration_Date" type="date" name="Date_of_Calibration" required>
+                        </div>
+                        <div class="w-full md:w-1/4 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Current Date
+                            </label>
+                            <input
+                                class="appearance-none block mb-3 w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="Next_Due_Date" type="date" name="Next_Due_Date" required>
+                        </div>
+                    </div>
+                    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                        <div class="w-full overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Equipment Name
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Registration Tag
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Cal Cert
+                                        </th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="Calibration_Table" class="bg-white divide-y divide-gray-200">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="card-title">Online Store Visitors</h3>
+                                    <a href="javascript:void(0);">View Report</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <p class="d-flex flex-column">
+                                        <span class="text-bold text-lg">820</span>
+                                        <span>Visitors Over Time</span>
+                                    </p>
+                                    <p class="ml-auto d-flex flex-column text-right">
+                                        <span class="text-success">
+                                            <i class="fas fa-arrow-up"></i> 12.5%
+                                        </span>
+                                        <span class="text-muted">Since last week</span>
+                                    </p>
+                                </div>
+                                <!-- /.d-flex -->
+
+                                <div class="position-relative mb-4">
+                                    <canvas id="visitors-chart" height="200"></canvas>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end">
+                                    <span class="mr-2">
+                                        <i class="fas fa-square text-primary"></i> This Week
+                                    </span>
+
+                                    <span>
+                                        <i class="fas fa-square text-gray"></i> Last Week
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <h3 class="card-title">Products</h3>
+                                <div class="card-tools">
+                                    <a href="#" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-striped table-valign-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Sales</th>
+                                            <th>More</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="dist/img/default-150x150.png" alt="Product 1"
+                                                    class="img-circle img-size-32 mr-2">
+                                                Some Product
+                                            </td>
+                                            <td>$13 USD</td>
+                                            <td>
+                                                <small class="text-success mr-1">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    12%
+                                                </small>
+                                                12,000 Sold
+                                            </td>
+                                            <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="dist/img/default-150x150.png" alt="Product 1"
+                                                    class="img-circle img-size-32 mr-2">
+                                                Another Product
+                                            </td>
+                                            <td>$29 USD</td>
+                                            <td>
+                                                <small class="text-warning mr-1">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    0.5%
+                                                </small>
+                                                123,234 Sold
+                                            </td>
+                                            <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="dist/img/default-150x150.png" alt="Product 1"
+                                                    class="img-circle img-size-32 mr-2">
+                                                Amazing Product
+                                            </td>
+                                            <td>$1,230 USD</td>
+                                            <td>
+                                                <small class="text-danger mr-1">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    3%
+                                                </small>
+                                                198 Sold
+                                            </td>
+                                            <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="dist/img/default-150x150.png" alt="Product 1"
+                                                    class="img-circle img-size-32 mr-2">
+                                                Perfect Item
+                                                <span class="badge bg-danger">NEW</span>
+                                            </td>
+                                            <td>$199 USD</td>
+                                            <td>
+                                                <small class="text-success mr-1">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    63%
+                                                </small>
+                                                87 Sold
+                                            </td>
+                                            <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="card-title">Sales</h3>
+                                    <a href="javascript:void(0);">View Report</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <p class="d-flex flex-column">
+                                        <span class="text-bold text-lg">$18,230.00</span>
+                                        <span>Sales Over Time</span>
+                                    </p>
+                                    <p class="ml-auto d-flex flex-column text-right">
+                                        <span class="text-success">
+                                            <i class="fas fa-arrow-up"></i> 33.1%
+                                        </span>
+                                        <span class="text-muted">Since last month</span>
+                                    </p>
+                                </div>
+                                <!-- /.d-flex -->
+
+                                <div class="position-relative mb-4">
+                                    <canvas id="sales-chart" height="200"></canvas>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end">
+                                    <span class="mr-2">
+                                        <i class="fas fa-square text-primary"></i> This year
+                                    </span>
+
+                                    <span>
+                                        <i class="fas fa-square text-gray"></i> Last year
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <h3 class="card-title">Online Store Overview</h3>
+                                <div class="card-tools">
+                                    <a href="#" class="btn btn-sm btn-tool">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-tool">
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                                    <p class="text-success text-xl">
+                                        <i class="ion ion-ios-refresh-empty"></i>
+                                    </p>
+                                    <p class="d-flex flex-column text-right">
+                                        <span class="font-weight-bold">
+                                            <i class="ion ion-android-arrow-up text-success"></i> 12%
+                                        </span>
+                                        <span class="text-muted">CONVERSION RATE</span>
+                                    </p>
+                                </div>
+                                <!-- /.d-flex -->
+                                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                                    <p class="text-warning text-xl">
+                                        <i class="ion ion-ios-cart-outline"></i>
+                                    </p>
+                                    <p class="d-flex flex-column text-right">
+                                        <span class="font-weight-bold">
+                                            <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
+                                        </span>
+                                        <span class="text-muted">SALES RATE</span>
+                                    </p>
+                                </div>
+                                <!-- /.d-flex -->
+                                <div class="d-flex justify-content-between align-items-center mb-0">
+                                    <p class="text-danger text-xl">
+                                        <i class="ion ion-ios-people-outline"></i>
+                                    </p>
+                                    <p class="d-flex flex-column text-right">
+                                        <span class="font-weight-bold">
+                                            <i class="ion ion-android-arrow-down text-danger"></i> 1%
+                                        </span>
+                                        <span class="text-muted">REGISTRATION RATE</span>
+                                    </p>
+                                </div>
+                                <!-- /.d-flex -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.1.0
+        </div>
+    </footer>
+</div>
+{% endblock %}

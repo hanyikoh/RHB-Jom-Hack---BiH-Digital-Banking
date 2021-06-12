@@ -1,0 +1,155 @@
+{% extends 'layout.html' %}
+{% block title %}
+BiH Banking FAQ Page
+{% endblock %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/faq_style.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	    <script src="https://use.fontawesome.com/30c21ac8e0.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="my-5"><img src="{{ url_for('static', filename='/icon/BiH_Banking.png') }}" alt="logo" class="img-fluid d-block mx-auto"/></a></p>
+   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li ><a data-toggle="tab" href="#tab1" aria-selected="true" class="active">GENERAL FAQS</a></li>
+                        <li><a data-toggle="tab" href="#tab2" aria-selected="false">LOAN FAQS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane fade show active">
+                            <div class="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="generalOne">
+                                        <a href="#collapseGeneralOne" data-toggle="collapse" data-target="#collapseGeneralOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <p class="mb-0">
+                                                Is account registration required?
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <div id="collapseGeneralOne" class="collapse" aria-labelledby="generalOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Account registration at BiH Banking is required in order to apply for the loan.
+                                        </div>
+                                    </div>
+                                </div><!-- close card-->
+                                <div class="card">
+                                    <div class="card-header" id="generalTwo">
+                                        <a href="#collapseGeneralTwo" class="collapsed" data-toggle="collapse" data-target="#collapseGeneralTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          <p class="mb-0">Is there any registration fee?</p>
+                                        </a>
+                                    </div>
+                                    <div id="collapseGeneralTwo" class="collapse" aria-labelledby="generalTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            No, account registration is completely free for all users.
+                                        </div>
+                                    </div>
+                                </div><!-- card-->
+                                <div class="card">
+                                    <div class="card-header" id="generalThree">
+                                        <a href="#collapseGeneralThree" class="collapsed" data-toggle="collapse" data-target="#collapseGeneralThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <p class="mb-0">Where can I learn more about BiH Banking?</p>
+                                        </a>
+                                    </div>
+                                    <div id="collapseGeneralThree" class="collapse" aria-labelledby="generalThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            You can check out on our BiH Malaysia’s social media channels. We will be sharing a lot of latest updates and announcements there.
+                                        </div>
+                                    </div>
+                                </div><!-- card-->
+                                <div class="card">
+                                    <div class="card-header" id="generalFour">
+                                        <a href="#collapseGeneralFour" class="collapsed" data-toggle="collapse" data-target="#collapseGeneralFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <p class="mb-0">What if I am not able to find my answer here?</p>
+                                        </a>
+                                    </div>
+                                    <div id="collapseGeneralFour" class="collapse" aria-labelledby="generalFour" data-parent="#accordion">
+                                        <div class="card-body">
+                                            You can contact us at bcs@bih.com.my or reach us through our social media channels.
+                                        </div>
+                                    </div>
+                                </div><!-- card-->
+                            </div><!-- accordion-->
+                        </div><!-- tab 1-->
+                    <div id="tab2" class="tab-pane fade">
+                        <div class="accordion">
+                            <div class="card">
+                                <div class="card-header" id="loanOne">
+                                    <a href="#collapseLoanOne"   data-toggle="collapse" data-target="#collapseLoanOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <p class="mb-0">Who is eligible for this loan application?</p>
+                                    </a>
+                                </div>
+                                <div id="collapseLoanOne" class="collapse" aria-labelledby="loanOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        This loan application is mainly for all Malaysia startup companies.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="loanTwo">
+                                    <a href="#collapseLoanTwo" class="collapsed" data-toggle="collapse" data-target="#collapseLoanTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      <p class="mb-0">What is the main purpose of this loan application?</p>
+                                    </a>
+                                </div>
+                                <div id="collapseLoanTwo" class="collapse" aria-labelledby="loanTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        To help startups or companies in growing their business with our loans.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="loanThree">
+                                    <a href="#collapseLoanThree" class="collapsed" data-toggle="collapse" data-target="#collapseLoanThree" aria-expanded="false" aria-controls="collapseThree">
+                                      <p class="mb-0">
+                                        What should I do if I want to apply for a loan?</p>
+                                    </a>
+                                </div>
+                                <div id="collapseLoanThree" class="collapse" aria-labelledby="loanThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        There are 3 main steps that you need to complete. First, fill up the basic information of your company including company name, type of business, etc. 
+                                        Second, upload your company’s balance sheets and income statements for the past 3 months. Lastly, fill up the business model strategy of your company.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="loanFour">
+                                    <a href="#collapseLoanFour" class="collapsed" data-toggle="collapse" data-target="#collapseLoanFour" aria-expanded="false" aria-controls="collapseFour">
+                                      <p class="mb-0">
+                                        Will I be notified if my application is approved or declined?</p>
+                                    </a>
+                                </div>
+                                <div id="collapseLoanFour" class="collapse" aria-labelledby="loanFour" data-parent="#accordion">
+                                    <div class="card-body"> 
+                                        You will be notified via email on the status of your application, whether it is approved or declined. If your loan is approved by the bank, 
+                                        you will receive an Approval Letter stating the payment due date, installment amount, tenure, loan amount approved and the loan account number.
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- accordion-->
+                    </div><!-- tab2 -->
+                  </div><!-- tab content-->
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>
+{% endblock %}
