@@ -20,7 +20,7 @@ Running the app on localhost.
 python run.py
 ```
 
-To quit or exit the virtual environment, type
+To quit or exit the virtual environment, simply type
 
 ```
 deactivate
@@ -62,7 +62,3 @@ Password: `admin`
 [UI Design](https://docs.google.com/presentation/d/1CU5OflKXtCN6aYGBOBx8i8aEqzaJgckkS9ZFZKmXeeU/edit#slide=id.p)
 
 [RHB Jom Hack Page](https://www.jomhack.com/rhbhackathon/)
-
-## Create your own test site on your own module and link with these cards
-
-![image](https://user-images.githubusercontent.com/53308785/118397536-0b382080-b687-11eb-97d7-e8b2ff162b87.png)
