@@ -10,7 +10,7 @@ class Company(db.Model):
     company_id = db.Column(db.Integer(), primary_key=True)
     company_name = db.Column(db.String(200), nullable=False)
     company_address_1 = db.Column(db.String(200), nullable=False)
-    company_address_2 = db.Column(db.String(200), nullable=False)
+    company_address_2 = db.Column(db.String(200))
     city = db.Column(db.String(50), nullable=False)
     zip = db.Column(db.Integer(), nullable=False)
     country = db.Column(db.String(50), nullable=False)
@@ -64,5 +64,6 @@ class Sales(db.Model):
     application_id = db.Column(db.ForeignKey(BankLoanApplication.application_id))
     month = db.Column(db.Integer, nullable=False)
     year = db.Column(db.Integer, nullable=False)
+    sales = db.Column(db.Integer, nullable=False)
 
     
