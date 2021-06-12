@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, redirect, url_for, flash, request, session
+from flask import render_template, redirect, url_for, flash, request, session, jsonify
 from app.forms import LoginForm, RegisterForm, CompanyDetailForm,StrategyForm
 from app.models import User, Company, BankLoanApplication, Sales
 from flask_login import login_user, logout_user, login_required, current_user
@@ -85,6 +85,20 @@ def logout():
 @app.route('/main', methods=['GET', 'POST'])
 def main_page():
     session['logged_in'] = True
+    
+    if request.method == "POST":
+        flash('helllooooooooo')
+        flash(request.form)
+        # return jsonify(request.form)
+        return render_template('main.html')
+
+    # fetch sales from rds
+    all_sales = Sales.query.filter_by(application_id = 1).all()
+    sales_entry = {}
+    for sales in all_sales:
+        month_year = '{:02d}/{}'.format(sales.month, sales.year)
+        sales_entry[month_year] = sales.sales, 
+        
     return render_template('main.html')
 
 # check available services
