@@ -89,11 +89,14 @@ def main_page():
     if request.method == "POST":
         flash('helllooooooooo')
         flash(request.form)
-        # return jsonify(request.form)
 
-        
+        response = request.form.to_dict(flat=True)
+        flash(response)
 
-
+        for i in range(int(len(response)/2)):
+            profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
+            flash(f"profit for month {i} is {profit}")
+            
         return render_template('main.html')
 
     # fetch sales from rds
