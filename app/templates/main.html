@@ -252,7 +252,7 @@ BiH Service
                 <div class="row" id="application" style="display: none;">
                     <div class="container shadow-lg">
                         <div class="card px-0 pt-4 pb-0 mt-3 mb-3 p-4">
-                            <h2 id="heading">Business Model Strategy</h2>
+                            <h2 id="heading">Bank Loan Application</h2>
                             <p>Fill up all the informartion to next step</p>
                             <form id="msform">
                                 <!-- progressbar -->
@@ -270,14 +270,86 @@ BiH Service
                                     <div class="form-card">
                                         <div class="row">
                                             <div class="col-7">
-                                                <h2 class="fs-title">Step #1: How will your startup deliver value?
+                                                <h2 class="fs-title">                
+                                                    APPLY FOR BANK LOAN
                                                 </h2>
+                                                <p>Kindly fill in all fields in order to go to the next step.</p>
+
                                             </div>
                                             <div class="col-5">
                                                 <h2 class="steps">Step 1 - 4</h2>
                                             </div>
                                         </div>
-                                    </div> <input type="button" name="next" class="next action-button" value="Next" />
+                                    </div> 
+
+                                    <div class="col-auto mb-4">
+                                        {{ form.companyName.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Company Full Name">
+                                    </div>
+                
+                                    <div class="col-auto mb-4">
+                                        {{ form.companyAddress1.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Address 1">
+                                    </div>
+                
+                                    <div class="col-auto mb-4">
+                                        {{ form.companyAddress2.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Address 2">
+                                    </div>
+                
+                                    <div class="col-auto mb-4 row g-3 align-items-auto">
+                                        <div class="col-md-4">
+                                            {{ form.city.label(class="float-left") }}
+                                            <input type="text" class="form-control" placeholder="City">
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.zip.label(class="float-left") }}
+                                            <input type="text" class="form-control" placeholder="Zip">
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.country.label(class="float-left") }}
+                                            <input type="text" class="form-control" placeholder="Country">
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-md-12 mb-3">
+                                        {{ form.businessType.label(class="float-left") }}
+                                        <br>
+                                        <select type="select" class="form-select form-select-lg mb-3 w-full" aria-label=".form-select-lg">
+                                            <option selected>Business Type</option>
+                                            <option value="1">Sole Proprietorship</option>
+                                            <option value="2">Partnership</option>
+                                            <option value="3">Private Limited Company</option>
+                                            <option value="4">Company Limited By Guarantee</option>
+                                            <option value="5">Unlimited Company</option>
+                                            <option value="6">Public Limited Company</option>
+                                            <option value="7">Limited Liability Partnership</option>
+                                            <option value="8">Foreign Company</option>
+                                        </select>
+                
+                                        <div class="float-right mb-4">
+                                            <button type="submit" class="btn btn-danger">Need Help?</button>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-md-12 mb-4">
+                                        {{ form.contactNumber.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Contact Number">
+                                    </div>
+                
+                                    <div class="col-md-12 mb-4">
+                                        {{ form.contactEmail.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Email">
+                                    </div>
+                
+                                    <div class="col-md-12 mb-4">
+                                        {{ form.website.label(class="float-left") }}
+                                        <input type="text" class="form-control" placeholder="Website Address">
+                                    </div>
+                
+                                    <br>
+
+                                    <input type="button" name="next" class="next action-button" value="Next" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
@@ -371,7 +443,7 @@ BiH Service
                     </div>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto" id="prediction-form">
-                            <form action="" method="POST">
+                            <form action="/predict" method="POST">
 
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">

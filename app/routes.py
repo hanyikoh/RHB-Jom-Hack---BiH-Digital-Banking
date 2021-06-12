@@ -85,7 +85,9 @@ def logout():
 @app.route('/main', methods=['GET', 'POST'])
 def main_page():
     session['logged_in'] = True
-    return render_template('main.html')
+    form = CompanyDetailForm()
+
+    return render_template('main.html', form = form)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
@@ -146,8 +148,8 @@ def get_segment( request ):
 
 ## Model
 ## Getting input from the forms
-#@app.route('/predict',methods=['POST'])
-#def predict():
+# @app.route('/predict',methods=['POST'])
+# def predict():
 
 #    int_features = [int(x) for x in request.form.values()]
 #    final_features = [np.array(int_features)] 

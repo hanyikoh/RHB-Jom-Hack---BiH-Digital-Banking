@@ -46,3 +46,9 @@ class StrategyForm(FlaskForm):
     partners = TextAreaField(label='Who are the partners that your startup will need to work with in order to get things working?', validators=[DataRequired()])
     valueGenerate = TextAreaField(label='What are the things that you need to do in order to generate things such as: your value proposition; distribution channels for your solution; customer relationships; revenue', validators=[DataRequired()])
     resources = TextAreaField(label='What are the specific resources you need to generate value?', validators=[DataRequired()])
+
+    introduction TextAreaField(label='Introduce yourself and tell us something interesting about you?', validators=[DataRequired()])
+    why TextAreaField(label='Why do you do what you do?', validators=[DataRequired()])
+    problems TextAreaField(label='What problems are you solving?', validators=[DataRequired()])
+    benefit TextAreaField(label='Who specifically will benefit from this (ICA/ICP)?', validators=[DataRequired()])
+    solving TextAreaField(label='How are you solving this/their problems?', validators=[DataRequired()])

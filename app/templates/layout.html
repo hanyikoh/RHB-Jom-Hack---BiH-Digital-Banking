@@ -185,17 +185,21 @@
     });
     </script>
 
+
     <script>
         $( "#establishmentDate,#currentDate" ).change(function() {
             var months;
             var establishmentDate = new Date($('#establishmentDate').val());
             var currentDate = new Date($('#currentDate').val());
             months = (currentDate.getFullYear() - establishmentDate.getFullYear()) * 12;
+            years = currentDate.getFullYear() - establishmentDate.getFullYear();
+            var startMonth = establishmentDate.getMonth();
             months -= establishmentDate.getMonth();
             months += currentDate.getMonth();
-            console.log(months);
             if (months > 0) {
                         $("#Expenses_Table").empty();
+                        $('#prediction-submit').empty();
+                        for (var k = 0; k <= years; k++) {
                             for (var i = 0; i < months; i++) {
                                 var row =
                                     "<tr> <input type='hidden' name='Registration_Tag[]'' value='" +
@@ -211,7 +215,8 @@
                                     "</td>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='text-sm text-gray-500'>" +
-                                        i + " Month"+
+                                    "<input id='date"+i+"'"+"value='"+(parseInt(startMonth)+parseInt(i)+1).toString()+"\\"+(parseInt(establishmentDate.getFullYear())+parseInt(k)).toString()+"'"+  "type='text' disabled placeholder='' name='dates'>" +
+
                                     "</div>" +
                                     "</td>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
@@ -230,10 +235,16 @@
                                     "</td>" +
                                     "</tr>"
                                 $("#Expenses_Table").append(row);
+                                if(i + 1 > 12){
+                                    startMonth = 0;
+                                    break;
+                                }
                             }
+                            months -= 12;
+                        }
                             $('#prediction-form form').append('<button id="prediction-submit" type="submit" class="mt-3 btn btn-secondary">submit</button>')
 
-                        }
+                    }
             // return months <= 0 ? 0 : months;
         });
     </script>
@@ -357,7 +368,8 @@
     }
 
     #msform input,
-    #msform textarea {
+    #msform textarea,
+    #msform select {
         padding: 8px 15px 8px 15px;
         border: 1px solid #ccc;
         border-radius: 0px;
