@@ -23,7 +23,8 @@ BiH Service
 
 
 
-<div class="wrapper" x-data="{
+<div class="wrapper" style="display: flex;
+justify-content: space-between;" x-data="{
     openTab:1,
     activeClasses:'border-l border-t border-r rounded-t text-blue-700',
     inactiveClasses: 'text-blue-500 hover:text-blue-800'
@@ -33,9 +34,10 @@ BiH Service
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside style="max-height: 100vh !important; position: sticky !important;" class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar"  
+        style="height: 100vh;position: -webkit-sticky;position: sticky; top: 0;">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -68,7 +70,7 @@ BiH Service
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
+                            <p class="text-white">
                                 Dashboard
                                 <i class="right fas fa-angle-left"></i>
                             </p>
@@ -82,7 +84,7 @@ BiH Service
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div style="margin-left: 0 !important;"class="content-wrapper w-full">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -270,7 +272,7 @@ BiH Service
                                     <div class="form-card">
                                         <div class="row">
                                             <div class="col-7">
-                                                <h2 class="fs-title">                
+                                                <h2 class="fs-title">
                                                     APPLY FOR BANK LOAN
                                                 </h2>
                                                 <p>Kindly fill in all fields in order to go to the next step.</p>
@@ -280,23 +282,23 @@ BiH Service
                                                 <h2 class="steps">Step 1 - 4</h2>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
 
                                     <div class="col-auto mb-4">
                                         {{ form.companyName.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Company Full Name">
                                     </div>
-                
+
                                     <div class="col-auto mb-4">
                                         {{ form.companyAddress1.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Address 1">
                                     </div>
-                
+
                                     <div class="col-auto mb-4">
                                         {{ form.companyAddress2.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Address 2">
                                     </div>
-                
+
                                     <div class="col-auto mb-4 row g-3 align-items-auto">
                                         <div class="col-md-4">
                                             {{ form.city.label(class="float-left") }}
@@ -311,11 +313,12 @@ BiH Service
                                             <input type="text" class="form-control" placeholder="Country">
                                         </div>
                                     </div>
-                
+
                                     <div class="col-md-12 mb-3">
                                         {{ form.businessType.label(class="float-left") }}
                                         <br>
-                                        <select type="select" class="form-select form-select-lg mb-3 w-full" aria-label=".form-select-lg">
+                                        <select type="select" class="form-select form-select-lg mb-3 w-full"
+                                            aria-label=".form-select-lg">
                                             <option selected>Business Type</option>
                                             <option value="1">Sole Proprietorship</option>
                                             <option value="2">Partnership</option>
@@ -326,27 +329,27 @@ BiH Service
                                             <option value="7">Limited Liability Partnership</option>
                                             <option value="8">Foreign Company</option>
                                         </select>
-                
+
                                         <div class="float-right mb-4">
                                             <button type="submit" class="btn btn-danger">Need Help?</button>
                                         </div>
                                     </div>
-                
+
                                     <div class="col-md-12 mb-4">
                                         {{ form.contactNumber.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Contact Number">
                                     </div>
-                
+
                                     <div class="col-md-12 mb-4">
                                         {{ form.contactEmail.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Email">
                                     </div>
-                
+
                                     <div class="col-md-12 mb-4">
                                         {{ form.website.label(class="float-left") }}
                                         <input type="text" class="form-control" placeholder="Website Address">
                                     </div>
-                
+
                                     <br>
 
                                     <input type="button" name="next" class="next action-button" value="Next" />
@@ -445,29 +448,29 @@ BiH Service
                         <div class="w-full overflow-x-auto" id="prediction-form">
                             <form action="/predict" method="POST">
 
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Date
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Income
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Expenses
-                                        </th>
-                                        <th scope="col" class="relative px-6 py-3">
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="Expenses_Table" class="bg-white divide-y divide-gray-200">
-                                </tbody>    
-                            </table>
-                            
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Date
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Income
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Expenses
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Expenses_Table" class="bg-white divide-y divide-gray-200">
+                                    </tbody>
+                                </table>
+
                             </form>
 
                         </div>
@@ -500,16 +503,16 @@ BiH Service
                                     </p>
                                 </div>
                                 <!-- /.d-flex -->
-    
+
                                 <div class="position-relative mb-4">
                                     <canvas id="myChart"></canvas>
                                 </div>
-    
+
                                 <div class="d-flex flex-row justify-content-end">
                                     <span class="mr-2">
                                         <i class="fas fa-square text-primary"></i> This Week
                                     </span>
-    
+
                                     <span>
                                         <i class="fas fa-square text-gray"></i> Last Week
                                     </span>
@@ -774,18 +777,9 @@ BiH Service
     <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
+
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.1.0
-        </div>
-    </footer>
 </div>
 {% endblock %}
