@@ -23,7 +23,11 @@ BiH Service
 
 
 
-<div class="wrapper">
+<div class="wrapper" x-data="{
+    openTab:1,
+    activeClasses:'border-l border-t border-r rounded-t text-blue-700',
+    inactiveClasses: 'text-blue-500 hover:text-blue-800'
+}">
     <!-- Navbar -->
 
     <!-- /.navbar -->
@@ -35,10 +39,10 @@ BiH Service
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="./static/google.png" class="img-circle elevation-2" alt="" />
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Ivan</a>
                 </div>
             </div>
 
@@ -121,7 +125,7 @@ BiH Service
                                         <h6>
                                             Web Developer and Designer
                                         </h6>
-                                        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                        <p class="proile-rating">CTOS : <span>760</span></p>
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
@@ -136,10 +140,13 @@ BiH Service
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="/main/form/1" class="p-2 text-white btn-secondary rounded"
+                                    <!-- <a href="/main/form/1" class="p-2 text-white btn-secondary rounded"
                                         name="btnAddMore">
                                         Apply for bank loan
-                                    </a>
+                                    </a> -->
+                                    <div id="showApplication" class="p-2 text-white btn-secondary rounded">
+                                         Apply for bank loan
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -154,7 +161,6 @@ BiH Service
                                         <a href="">Web Developer</a><br />
                                         <a href="">WordPress</a><br />
                                         <a href="">WooCommerce</a><br />
-                                        <a href="">PHP, .Net</a><br />
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -174,7 +180,7 @@ BiH Service
                                                     <label>Director Name</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p>Kshiti Ghelani</p>
+                                                    <p>Ivan</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -208,17 +214,17 @@ BiH Service
                                                 <div class="loanProgress">
                                                     <ul>
                                                         <li>
-                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <img src="static/submit_form.jpg" alt="" class="mx-auto"><br>
                                                             <i class="fa fa-check"></i>
                                                             <p>Form Submitted</p>
                                                         </li>
                                                         <li>
-                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <img src="static/submit_form.jpg" alt="" class="mx-auto"><br>
                                                             <i class="fa fa-check"></i>
                                                             <p>In Progress</p>
                                                         </li>
                                                         <li>
-                                                            <img src="static/submit_form.jpg" alt=""><br>
+                                                            <img src="static/submit_form.jpg" alt="" class="mx-auto"><br>
                                                             <i class="fa fa-refresh"></i>
                                                             <p>Approve</p>
                                                         </li>
@@ -239,6 +245,92 @@ BiH Service
                     </div>
                 </div>
 
+                <!-- <div x-show="openTab===2"> -->
+                        <div class="row" id="application" style="display: none;">
+                            <div class="container shadow-lg">
+                                <div class="card px-0 pt-4 pb-0 mt-3 mb-3 p-4">
+                                    <h2 id="heading">Business Model Strategy</h2>
+                                    <p>Fill up all the informartion to next step</p>
+                                    <form id="msform">
+                                        <!-- progressbar -->
+                                        <ul id="progressbar">
+                                            <li class="active" id="account"><strong>Account</strong></li>
+                                            <li id="personal"><strong>Personal</strong></li>
+                                            <li id="payment"><strong>Image</strong></li>
+                                            <li id="confirm"><strong>Finish</strong></li>
+                                        </ul>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div> <br> <!-- fieldsets -->
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="fs-title">Step #1: How will your startup deliver value?
+                                                        </h2>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="steps">Step 1 - 4</h2>
+                                                    </div>
+                                                </div>               
+                                            </div> <input type="button" name="next" class="next action-button" value="Next" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="fs-title">Step #2: How will your startup create value?</h2>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="steps">Step 2 - 4</h2>
+                                                    </div>
+                                                </div>               
+                                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input
+                                                type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="fs-title">Upload A Picth for Your General Business Model Strategy:</h2>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="steps">Step 3 - 4</h2>
+                                                    </div>
+                                                </div> <label class="fieldlabels">Upload Your Video:</label> <input type="file" name="pic"
+                                                    accept="image/*">
+                                            </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input
+                                                type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="fs-title">Finish:</h2>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="steps">Step 4 - 4</h2>
+                                                    </div>
+                                                </div> <br><br>
+                                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                                                </div> <br><br>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-7 text-center">
+                                                        <h5 class="purple-text text-center">You Have Successfully Submitted Your Application</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+
                 <div class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
@@ -249,7 +341,7 @@ BiH Service
                     </div><!-- /.container-fluid -->
                 </div>
 
-                <div class="container w-full bg-white rounded-lg shadow-lg p-4">
+                <div class="mb-4 container w-full bg-white rounded-lg shadow-lg p-4">
                     <div class="flex flex-wrap -mx-3 mb-6 col-start-3 col-span-8 row-start-2">
                         <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
