@@ -90,6 +90,10 @@ def main_page():
         flash('helllooooooooo')
         flash(request.form)
         # return jsonify(request.form)
+
+        
+
+
         return render_template('main.html')
 
     # fetch sales from rds

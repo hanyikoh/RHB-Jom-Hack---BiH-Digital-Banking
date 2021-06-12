@@ -231,13 +231,26 @@
                                     "</tr>"
                                 $("#Expenses_Table").append(row);
                             }
+<<<<<<< HEAD
                             $('#prediction-form').append('<button type="submit" class="mt-3 btn btn-secondary">Submit</button>')
+=======
+                            $('#prediction-form form').append('<button id="prediction-submit" type="submit" class="mt-3 btn btn-secondary">submit</button>')
+>>>>>>> 885303240d866c1ba51050638f421c2c36e4a80e
 
                         }
             // return months <= 0 ? 0 : months;
         });
     </script>
+    <script>
+        $('#prediction-submit').click(function(){
+            $('#prediction-').each(function(input){
+                var value = $(input).value();
+                var id = $(input).attr('id');
+                console.log('id: ' + id + ' value:' + value);
+            });
+        });
 
+    </script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
