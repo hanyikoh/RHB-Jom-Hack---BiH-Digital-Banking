@@ -3,6 +3,10 @@ from flask import render_template, redirect, url_for, flash, request, session, j
 from app.forms import LoginForm, RegisterForm, CompanyDetailForm,StrategyForm
 from app.models import User, Company, BankLoanApplication, Sales
 from flask_login import login_user, logout_user, login_required, current_user
+import json
+import numpy as np
+import pandas as pd
+from app import model_arima as model
 
 @app.route('/')
 @app.route('/home')
@@ -167,10 +171,19 @@ def get_segment( request ):
 
 ## Model
 ## Getting input from the forms
-#@app.route('/predict',methods=['POST'])
-#def predict():
-
-#    int_features = [int(x) for x in request.form.values()]
+@app.route('/predict',methods=['POST'])
+def predict():
+#   int_features = [int(x) for x in request.form.values()]
 #    final_features = [np.array(int_features)] 
-
-#   return render_template('xx.html')
+    #dummy data
+    arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
+    df = pd.DataFrame(arr)
+    output = model.model_prediction(df)
+    #Read from database
+    label_list = ['12/2021','01/22']
+    values_list = json.dumps(output.tolist())
+    json_output = {
+        "labels": label_list,
+        "values": values_list
+    }
+    return jsonify(json_output)
