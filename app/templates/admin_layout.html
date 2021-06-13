@@ -62,12 +62,70 @@
 
 
     <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-              
+
+    <script>
+    const config = {
+    type: 'line',
+    data: data,
+    options: {
+        plugins: {
+        title: {
+            text: 'Chart.js Combo Time Scale',
+            display: true
+        }
+        },
+        scales: {
+        x: {
+            type: 'time',
+            display: true,
+            offset: true,
+            time: {
+            unit: 'day'
+            }
+        },
+        },
+    },
+    };
+
+const data = {
+  labels: labels,
+  datasets: [{
+    type: 'bar',
+label: 'Dataset 1',
+    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+    borderColor: Utils.CHART_COLORS.red,
+    data: Utils.numbers(NUMBER_CFG),
+  }, {
+    type: 'bar',
+    label: 'Dataset 2',
+    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+    borderColor: Utils.CHART_COLORS.blue,
+    data: Utils.numbers(NUMBER_CFG),
+  }, {
+    type: 'line',
+    label: 'Dataset 3',
+    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.green, 0.5),
+    borderColor: Utils.CHART_COLORS.green,
+    fill: false,
+    data: Utils.numbers(NUMBER_CFG),
+  }]
+};
+
+var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+const barsCtx = document.getElementById('myChart')
+window.myBar = new Chart(barsCtx, config)
+</script>
     </body>
     <style>
     body {
