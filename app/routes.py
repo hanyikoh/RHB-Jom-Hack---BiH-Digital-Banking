@@ -154,8 +154,6 @@ def admin_main_page():
     session['logged_in'] = True
     return render_template( 'admin_main.html', segment='index' )
 
-    # return render_template('admin_main.html')
-
 def get_segment( request ): 
 
     try:
@@ -188,7 +186,6 @@ def predict():
     values_list = json.dumps(output.tolist())
     json_output = {
         "labels": label_list,
-        "values": values_list,
-        "test":todo
+        "values": values_list
     }
     return jsonify(request.form)
