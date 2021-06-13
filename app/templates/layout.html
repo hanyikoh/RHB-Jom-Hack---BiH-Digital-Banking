@@ -27,7 +27,6 @@
         {% else %}
         <a class="navbar-brand" href="/">
             <img src="{{ url_for('static', filename='/icon/BiH.png') }}" class="img-fluid">
-            BiH Banking
         </a>
         {% endif %}
 
@@ -102,8 +101,8 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
@@ -204,21 +203,21 @@
                                     "<tr>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='text-sm text-gray-500'>" +
-                                    "<input id='date"+i+"'"+"value='"+(parseInt(startMonth)+parseInt(i)+1).toString()+"\\"+(parseInt(establishmentDate.getFullYear())+parseInt(k)).toString()+"'"+  "type='text' disabled placeholder='' name='dates'>" +
+                                    "<input id='date"+i+"'"+"value='"+(parseInt(startMonth)+parseInt(i)+1).toString()+"\\"+(parseInt(establishmentDate.getFullYear())+parseInt(k)).toString()+"'"+  "type='text' disabled placeholder='' name='dates[]'>" +
 
                                     "</div>" +
                                     "</td>" +
                                     "<td class='px-6 py-4 whitespace-nowrap'>" +
                                     "<div class='flex flex-wrap my-auto mb-6'>" +
                                     "<div class='w-full'>" +
-                                    "<input id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='income_"+i+"'>" +
+                                    "<input class='prediction_incomes' id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder=''  name='income_"+i+"'>" +
                                     "</div>" +
                                     "</div>" +
                                     "</td>" +
                                     "<td class='py-4 whitespace-nowrap text-sm text-gray-500'>" +
                                     "<div class='flex flex-wrap my-auto mb-6'>" +
                                     "<div class='w-full px-3'>" +
-                                    "<input id='expenses"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='expense_"+i+"'>" +
+                                    "<input class='prediction_expenses' id='expenses"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='expense_"+i+"'>" +
                                     "</div>" +
                                     "</div>" +
                                     "</td>" +
@@ -238,7 +237,7 @@
     </script>
     <script>
         $('#prediction-submit').click(function(){
-            $('#prediction-').each(function(input){
+            $('#prediction_incomes').each(function(input){
                 var value = $(input).value();
                 var id = $(input).attr('id');
                 console.log('id: ' + id + ' value:' + value);
@@ -288,6 +287,26 @@
                 });
             });
         </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
+    <script>
+        $(document).ready(function() { 
+    
+        $('#prediction-form form').submit(function (event) {
+            event.preventDefault();
+        var bodyFormData = new FormData(this);
+        
+
+        $.ajax({
+                    url: "/predict",
+                    data: bodyFormData,
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    done: function (data) {console.log(data.values)}
+                });
+            });
+        });
+    </script>
     </body>
 
 

@@ -30,7 +30,6 @@ def model_prediction(df):
                                                 enforce_stationarity=False,
                                                 enforce_invertibility=False)
                 results = model_ARIMA.fit()
-                print('ARIMA{}x{}12 - AIC:{}'.format(param, param_seasonal, results.aic))
             except:
                 continue
 
@@ -39,7 +38,6 @@ def model_prediction(df):
                                     seasonal_order=(0, 1, 1, 12),
                                     enforce_invertibility=False)
     results = model_ARIMA.fit()
-    print(results.summary().tables[1])
 
     # ## 5.0 Save the Model
 

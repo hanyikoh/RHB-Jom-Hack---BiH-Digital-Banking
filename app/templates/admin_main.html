@@ -10,24 +10,9 @@
 <div class="header bg-primary pb-6">
   <div class="container-fluid">
     <div class="header-body">
-      <div class="row align-items-center py-4">
-        <div class="col-lg-6 col-7">
-          <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Default</li>
-            </ol>
-          </nav>
-        </div>
-        <div class="col-lg-6 col-5 text-right">
-          <a href="#" class="btn btn-sm btn-neutral">New</a>
-          <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-        </div>
-      </div>
+
       <!-- Card stats -->
-      <div class="row">
+      <div class="row py-4">
         <div class="col-xl-3 col-md-6">
           <div class="card card-stats">
             <!-- Card body -->
@@ -412,12 +397,6 @@
     <div class="col-sm-6">
       <h1 class="m-0">Applications Management</h1>
     </div><!-- /.col -->
-    <div class="col-sm-6">
-      <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Dashboard v1</li>
-      </ol>
-    </div><!-- /.col -->
   </div><!-- /.row -->
 </div><!-- /.container-fluid -->
 
@@ -427,14 +406,13 @@
   <!-- /.row -->
   <div class="row">
     <div class="col-12">
-      <div class="card">
+      <div class="card shadow-lg">
         <div data-toggle="collapse" data-target="#collapseCalibration" aria-expanded="false"
           aria-controls="collapseExample">
           <h3 class="card-title m-2">Google</h3>
         </div>
         <!-- /.card-header -->
-        <div class="card-body table-responsive p-0 collapse" id="collapseCalibration">
-
+        <div class="shadow-lg card-body table-responsive p-0 collapse" id="collapseCalibration">
           <div class="container emp-profile">
             <form method="post">
               <div class="row">
@@ -451,7 +429,7 @@
                     <h6>
                       Web Developer and Designer
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <p class="proile-rating">CTOS :  : <span>790</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -492,7 +470,8 @@
                           <label>SSM Registration Id</label>
                         </div>
                         <div class="col-md-6">
-                          <p>1231231223</p>
+                          <p>1231231223<span class="ml-2"><button type="button" class="btn btn-success">Verify</button></p>
+                          </span>
                         </div>
                       </div>
                       <div class="row">
@@ -500,7 +479,7 @@
                           <label>Director Name</label>
                         </div>
                         <div class="col-md-6">
-                          <p>Kshiti Ghelani</p>
+                          <p>Ivan</p>
                         </div>
                       </div>
                       <div class="row">
@@ -560,41 +539,41 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div data-toggle="collapse" data-target="#collapseCalibration" aria-expanded="false"
+        <div data-toggle="collapse" data-target="#collapseApple" aria-expanded="false"
           aria-controls="collapseExample">
           <h3 class="card-title m-2">Apple</h3>
         </div>
         <!-- /.card-header -->
-        <div class="card-body table-responsive p-0 collapse" id="collapseCalibration">
+        <div class="shadow-lg card-body table-responsive p-0 collapse" id="collapseApple">
 
           <div class="container emp-profile">
             <form method="post">
               <div class="row">
                 <div class="col-md-4">
                   <div class="profile-img">
-                    <img src="../../static/google.png" width="140px" height="140px" alt="" />
+                    <img src="../../static/apple.jpg" width="270px" height="140px" alt="" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="profile-head">
                     <h5>
-                      Google
+                      Apple
                     </h5>
                     <h6>
                       Web Developer and Designer
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <p class="proile-rating">CTOS :  : <span>790</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#homeApple" role="tab"
                           aria-controls="home" aria-selected="true">About</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cashFlow" role="tab"
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cashFlowApple" role="tab"
                           aria-controls="cashFlow" aria-selected="false">Cashflow Prediction</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#businessModel" role="tab"
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#businessModelApple" role="tab"
                           aria-controls="businessModel" aria-selected="false">Business Model Strategy</a>
                       </li>
                     </ul>
@@ -618,21 +597,21 @@
                 </div>
                 <div class="col-md-8">
                   <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade show active" id="homeApple" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-md-6">
                           <label>SSM Registration Id</label>
                         </div>
                         <div class="col-md-6">
-                          <p>1231231223</p>
-                        </div>
+                          <p>1231231224<span class="ml-2"><button type="button" class="btn btn-success">Verify</button></p>
+                          </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
                           <label>Director Name</label>
                         </div>
                         <div class="col-md-6">
-                          <p>Kshiti Ghelani</p>
+                          <p>Chua Bing Quan</p>
                         </div>
                       </div>
                       <div class="row">
@@ -660,7 +639,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="cashFlow" role="tabpanel" aria-labelledby="cashFlow-tab">
+                    <div class="tab-pane fade" id="cashFlowApple" role="tabpanel" aria-labelledby="cashFlow-tab">
                       <div class="row">
                         <div class="profile-img">
                           <img src="../../static/prediction.png" width="600px" height="300px" alt="" />
@@ -692,19 +671,19 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div data-toggle="collapse" data-target="#collapseCalibration" aria-expanded="false"
+        <div data-toggle="collapse" data-target="#collapseMicrosoft" aria-expanded="false"
           aria-controls="collapseExample">
           <h3 class="card-title m-2">Microsoft</h3>
         </div>
         <!-- /.card-header -->
-        <div class="card-body table-responsive p-0 collapse" id="collapseCalibration">
+        <div class="shadow-lg card-body table-responsive p-0 collapse" id="collapseMicrosoft">
 
           <div class="container emp-profile">
             <form method="post">
               <div class="row">
                 <div class="col-md-4">
                   <div class="profile-img">
-                    <img src="../../static/google.png" width="140px" height="140px" alt="" />
+                    <img src="../../static/microsoft.png" width="140px" height="140px" alt="" />
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -715,18 +694,18 @@
                     <h6>
                       Web Developer and Designer
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <p class="proile-rating">CTOS : <span>690</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#homeMicrosoft" role="tab"
                           aria-controls="home" aria-selected="true">About</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cashFlow" role="tab"
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cashFlowMicrosoft" role="tab"
                           aria-controls="cashFlow" aria-selected="false">Cashflow Prediction</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#businessModel" role="tab"
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#businessModelMicrosoft" role="tab"
                           aria-controls="businessModel" aria-selected="false">Business Model Strategy</a>
                       </li>
                     </ul>
@@ -750,21 +729,21 @@
                 </div>
                 <div class="col-md-8">
                   <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade show active" id="homeMicrosoft" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-md-6">
                           <label>SSM Registration Id</label>
                         </div>
                         <div class="col-md-6">
-                          <p>1231231223</p>
-                        </div>
+                          <p>1231231225<span class="ml-2"><button type="button" class="btn btn-success">Verify</button></p>
+                          </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
                           <label>Director Name</label>
                         </div>
                         <div class="col-md-6">
-                          <p>Kshiti Ghelani</p>
+                          <p>Koh Han Yi</p>
                         </div>
                       </div>
                       <div class="row">
@@ -792,7 +771,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="cashFlow" role="tabpanel" aria-labelledby="cashFlow-tab">
+                    <div class="tab-pane fade" id="cashFlowMicrosoft" role="tabpanel" aria-labelledby="cashFlow-tab">
                       <div class="row">
                         <div class="profile-img">
                           <img src="../../static/prediction.png" width="600px" height="300px" alt="" />
@@ -818,7 +797,6 @@
   </div>
   <!-- /.row -->
 </div>
-{% include "includes/footer.html" %}
 
 </div>
 

@@ -177,6 +177,9 @@ def predict():
 #   int_features = [int(x) for x in request.form.values()]
 #    final_features = [np.array(int_features)] 
     #dummy data
+    # if request.method == "POST":
+        # todo = jsonify(request.form)
+        # print(todo)
     arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
     df = pd.DataFrame(arr)
     output = model.model_prediction(df)
@@ -185,6 +188,7 @@ def predict():
     values_list = json.dumps(output.tolist())
     json_output = {
         "labels": label_list,
-        "values": values_list
+        "values": values_list,
+        "test":todo
     }
-    return jsonify(json_output)
+    return jsonify(request.form)
