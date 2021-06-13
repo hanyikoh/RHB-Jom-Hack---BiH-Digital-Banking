@@ -164,8 +164,6 @@ def admin_main_page():
     session['logged_in'] = True
     return render_template( 'admin_main.html', segment='index' )
 
-    # return render_template('admin_main.html')
-
 def get_segment( request ): 
 
     try:

@@ -37,6 +37,12 @@ flask_wtf
 flask_bcrypt
 flask_login
 wtforms
+numpy
+pandas
+scipy
+statsmodels
+sklearn
+matplotlib
 ```
 
 To install a new package, make sure you are in the virtual environment.
