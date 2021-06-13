@@ -248,17 +248,20 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        var json_output_labels = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
+        var json_output_values = [500,543,520,480,678,288,440,620,450,400,670,500]
+
         const barConfig = {
         type: 'line',
         data: {
-            labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+            labels:json_output_labels,
             datasets: [
             {
                 label: 'Sales($)',
                 backgroundColor: '#0694a2',
                 // borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [3000,5000,12000,8000,15000,9000,20000,16000,25000,16000,15000,17000]
+                borderWidth: 3,
+                data:json_output_values
             },
             ],
         },

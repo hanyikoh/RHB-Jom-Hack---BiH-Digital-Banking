@@ -7,7 +7,7 @@ import json
 import numpy as np
 import pandas as pd
 from app import model_arima as model
-
+from ast import literal_eval
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -91,8 +91,18 @@ def main_page():
     session['logged_in'] = True
     form = CompanyDetailForm()
     
+    arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
+    df = pd.DataFrame(arr)
+    output = model.model_prediction(df)
+    #Read from database
+    label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
+    values_list = json.dumps(output.tolist())
+    json_output = {
+        "labels": label_list,
+        "values": literal_eval(values_list)
+    }
+
     if request.method == "POST":
-        flash('helllooooooooo')
         flash(request.form)
 
         response = request.form.to_dict(flat=True)
@@ -102,7 +112,7 @@ def main_page():
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
             
-    return render_template('main.html', form = form)
+    return render_template('main.html', form = form,json_output=json_output)
 
     # fetch sales from rds
     all_sales = Sales.query.filter_by(application_id = 1).all()
@@ -111,7 +121,7 @@ def main_page():
         month_year = '{:02d}/{}'.format(sales.month, sales.year)
         sales_entry[month_year] = sales.sales, 
         
-    return render_template('main.html')
+    return render_template('main.html',form = form, json_output=json_output)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
@@ -184,11 +194,10 @@ def predict():
     df = pd.DataFrame(arr)
     output = model.model_prediction(df)
     #Read from database
-    label_list = ['12/2021','01/22']
+    label_list = ['12/2021','01/2022','02/2022','03/2022','04/2022','05/2022','06/2022','07/2022','08/2022','09/2022','10/2022','11/2022']
     values_list = json.dumps(output.tolist())
     json_output = {
         "labels": label_list,
-        "values": values_list,
-        "test":todo
+        "values": values_list
     }
     return jsonify(request.form)
