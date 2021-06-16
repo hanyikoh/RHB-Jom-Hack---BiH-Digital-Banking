@@ -95,10 +95,10 @@ def main_page():
     
     arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
     df = pd.DataFrame(arr)
-    output = model.model_prediction(df)
+    output_sales = model.sales_prediction(df)
     #Read from database
     label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-    values_list =output.tolist()
+    values_list =output_sales.tolist()
     json_output = {
         "labels": label_list,
         "values": values_list
@@ -197,10 +197,10 @@ def predict():
         test_list.append(int(request.form.getlist('income')[i]))
     arr = np.array(test_list)
     df = pd.DataFrame(arr)
-    output = model.model_prediction(df)
+    output_sales = model.sales_prediction(df)
     #Read from database
     label_list = ['1','2','3','4','5','6','7','8','9','10','11','12']
-    values_list = output.tolist()
+    values_list = output_sales.tolist()
     json_output = {
         "labels": label_list,
         "values": values_list,
