@@ -192,16 +192,18 @@ def predict():
 #    final_features = [np.array(int_features)] 
     #dummy data
     # if request.method == "POST":
-    todo = type(request.form.getlist('income'))
-    arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
+    test_list=[]
+    for i in range(0, len(request.form.getlist('income'))):
+        test_list.append(int(request.form.getlist('income')[i]))
+    arr = np.array(test_list)
     df = pd.DataFrame(arr)
     output = model.model_prediction(df)
     #Read from database
-    label_list = ['12/2021','01/2022','02/2022','03/2022','04/2022','05/2022','06/2022','07/2022','08/2022','09/2022','10/2022','11/2022']
+    label_list = ['1','2','3','4','5','6','7','8','9','10','11','12']
     values_list = output.tolist()
     json_output = {
         "labels": label_list,
         "values": values_list,
-        'todo':todo
+        'todo':test_list
     }
     return jsonify(json_output)
