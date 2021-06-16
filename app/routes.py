@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 from app import model_arima as model
 from ast import literal_eval
+from datetime import datetime
+
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -102,6 +104,9 @@ def main_page():
         "values": literal_eval(values_list)
     }
 
+    today_date = datetime.now()
+
+    # press submit button
     if request.method == "POST":
         flash(request.form)
 
@@ -112,16 +117,16 @@ def main_page():
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
             
-    return render_template('main.html', form = form,json_output=json_output)
+    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
 
-    # fetch sales from rds
+    # fetch all profit from rds
     all_sales = Sales.query.filter_by(application_id = 1).all()
     sales_entry = {}
     for sales in all_sales:
         month_year = '{:02d}/{}'.format(sales.month, sales.year)
         sales_entry[month_year] = sales.sales, 
         
-    return render_template('main.html',form = form, json_output=json_output)
+    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
