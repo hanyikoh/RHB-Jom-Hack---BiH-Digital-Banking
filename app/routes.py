@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 from app import model_arima as model
 from ast import literal_eval
+from datetime import datetime
+
 @app.route('/')
 @app.route('/home')
 def home_page():
@@ -102,6 +104,9 @@ def main_page():
         "values": values_list
     }
 
+    today_date = datetime.now()
+
+    # press submit button
     if request.method == "POST":
         flash(request.form)
 
@@ -111,6 +116,7 @@ def main_page():
         for i in range(int(len(response)/2)):
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
+<<<<<<< HEAD
     flash(values_list)
     return render_template('main.html', form = form,json_output=json_output)
 
@@ -122,6 +128,19 @@ def main_page():
     #     sales_entry[month_year] = sales.sales, 
         
     # return render_template('main.html',form = form, json_output=json_output)
+=======
+            
+    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
+
+    # fetch all profit from rds
+    all_sales = Sales.query.filter_by(application_id = 1).all()
+    sales_entry = {}
+    for sales in all_sales:
+        month_year = '{:02d}/{}'.format(sales.month, sales.year)
+        sales_entry[month_year] = sales.sales, 
+        
+    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
+>>>>>>> 21004732bb03f08de4c396dbb72d76ddf76cf0bb
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])

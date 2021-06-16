@@ -1,26 +1,32 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- tailwind css -->
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
-        <title>
-            {% block title %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- tailwind css -->
 
-            {% endblock %}
-        </title>        
-        <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='/icon/BiH-alternate.png') }}"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.0-canary.14/tailwind.min.css" integrity="sha512-zXhmHxwXn8kUvZApt3iuxFG7cAHa2wongnyRnq2uAxppI5t/J5pz7I0mrm409qZaAu4KLhRtFTaNhO86OWQv5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-    </head>
-    <body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='/icon/BiH-alternate.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.0-canary.14/tailwind.min.css"
+        integrity="sha512-zXhmHxwXn8kUvZApt3iuxFG7cAHa2wongnyRnq2uAxppI5t/J5pz7I0mrm409qZaAu4KLhRtFTaNhO86OWQv5A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+</head>
+
+<body>
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-        {% if session['logged_in'] %} <!-- Logged in -->
+        {% if session['logged_in'] %}
+        <!-- Logged in -->
         <a class="navbar-brand" href="/main">
             <img src="{{ url_for('static', filename='/icon/BiH-alternate.png') }}" class="img-fluid">
         </a>
@@ -36,7 +42,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav mr-auto">
-                {% if session['logged_in'] %} <!-- Logged in -->
+                {% if session['logged_in'] %}
+                <!-- Logged in -->
                 <li class="nav-item active">
                     <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -46,15 +53,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/main/account">My Account</a>
                 </li>
-                {% else %} <!-- Logged out -->
+                {% else %}
+                <!-- Logged out -->
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>            
+                </li>
                 {% endif %}
             </ul>
 
             <ul class="navbar-nav">
-                {% if session['logged_in'] %}   
+                {% if session['logged_in'] %}
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
@@ -79,20 +87,20 @@
 
         </div>
     </nav>
-      
+
     {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
-    
+
     {% block content %}
 
     {% endblock %}
@@ -101,143 +109,158 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
     <script>
-    $(document).ready(function(){
+        $(document).ready(function () {
 
-    var current_fs, next_fs, previous_fs; //fieldsets
-    var opacity;
-    var current = 1;
-    var steps = $("fieldset").length;
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
 
-    setProgressBar(current);
+            setProgressBar(current);
 
-    $(".next").click(function(){
+            $(".next").click(function () {
 
-    current_fs = $(this).parent();
-    next_fs = $(this).parent().next();
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
 
-    //Add Class Active
-    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-    //show the next fieldset
-    next_fs.show();
-    //hide the current fieldset with style
-    current_fs.animate({opacity: 0}, {
-    step: function(now) {
-    // for making fielset appear animation
-    opacity = 1 - now;
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
 
-    current_fs.css({
-    'display': 'none',
-    'position': 'relative'
-    });
-    next_fs.css({'opacity': opacity});
-    },
-    duration: 500
-    });
-    setProgressBar(++current);
-    });
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
 
-    $(".previous").click(function(){
+            $(".previous").click(function () {
 
-    current_fs = $(this).parent();
-    previous_fs = $(this).parent().prev();
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
 
-    //Remove class active
-    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-    //show the previous fieldset
-    previous_fs.show();
+                //show the previous fieldset
+                previous_fs.show();
 
-    //hide the current fieldset with style
-    current_fs.animate({opacity: 0}, {
-    step: function(now) {
-    // for making fielset appear animation
-    opacity = 1 - now;
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
 
-    current_fs.css({
-    'display': 'none',
-    'position': 'relative'
-    });
-    previous_fs.css({'opacity': opacity});
-    },
-    duration: 500
-    });
-    setProgressBar(--current);
-    });
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
 
-    function setProgressBar(curStep){
-    var percent = parseFloat(100 / steps) * curStep;
-    percent = percent.toFixed();
-    $(".progress-bar")
-    .css("width",percent+"%")
-    }
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+            }
 
-    $(".submit").click(function(){
-    return false;
-    })
+            $(".submit").click(function () {
+                return false;
+            })
 
-    });
+        });
     </script>
 
 
     <script>
-        $( "#establishmentDate,#currentDate" ).change(function() {
+        $("#establishmentDate,#currentDate").change(function () {
             var months;
             var establishmentDate = new Date($('#establishmentDate').val());
             var currentDate = new Date($('#currentDate').val());
             months = (currentDate.getFullYear() - establishmentDate.getFullYear()) * 12;
             years = currentDate.getFullYear() - establishmentDate.getFullYear();
             var startMonth = establishmentDate.getMonth();
+            var startYear = establishmentDate.getFullYear();
             months -= establishmentDate.getMonth();
             months += currentDate.getMonth();
-            if (months > 0) {
-                        $("#Expenses_Table").empty();
-                        $('#prediction-submit').remove();
-                        for (var k = 0; k <= years; k++) {
-                            for (var i = 0; i < months; i++) {
-                                var row =
-                                    "<tr>" +
-                                    "<td class='px-6 py-4 whitespace-nowrap'>" +
-                                    "<div class='text-sm text-gray-500'>" +
-                                    "<input id='date"+i+"'"+"value='"+(parseInt(startMonth)+parseInt(i)+1).toString()+"\\"+(parseInt(establishmentDate.getFullYear())+parseInt(k)).toString()+"'"+  "type='text' disabled placeholder='' name='dates[]'>" +
 
-                                    "</div>" +
-                                    "</td>" +
-                                    "<td class='px-6 py-4 whitespace-nowrap'>" +
-                                    "<div class='flex flex-wrap my-auto mb-6'>" +
-                                    "<div class='w-full'>" +
-                                    "<input class='prediction_incomes' id='incomes"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder=''  name='income_"+i+"'>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</td>" +
-                                    "<td class='py-4 whitespace-nowrap text-sm text-gray-500'>" +
-                                    "<div class='flex flex-wrap my-auto mb-6'>" +
-                                    "<div class='w-full px-3'>" +
-                                    "<input class='prediction_expenses' id='expenses"+i+"'"+ "style='border: 3px solid gray !important;' type='text' required placeholder='' name='expense_"+i+"'>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</td>" +
-                                    "</tr>"
-                                $("#Expenses_Table").append(row);
-                                if(i + 1 > 12){
-                                    startMonth = 0;
-                                    break;
-                                }
-                            }
-                            months -= 12;
-                        }
-                            $('#prediction-form form').append('<button id="prediction-submit" type="submit" class="mt-3 btn btn-secondary">submit</button>')
+            var month;
+            var year = (parseInt(startYear)).toString();
+
+            if (months > 0) {
+                $("#Expenses_Table").empty();
+                $('#prediction-submit').remove();
+
+                for (var i = 0; i < months; i++) {
+                    month = ((parseInt(startMonth) + parseInt(i)) % 12 + 1);
+                    if (month < 10) {
+                        month = "0" + month.toString()
+                    } 
+
+                    var row =
+                        "<tr>" +
+                        "<td class='px-6 py-4 whitespace-nowrap'>" +
+                        "<div class='text-sm text-gray-500'>" +
+                        "<input id='date" + i + "'" + "value='" + month + "/" + year.toString() + "'" + "type='text' disabled placeholder='' name='dates[]'>" +
+                        "</div>" +
+                        "</td>" +
+                        "<td class='px-6 py-4 whitespace-nowrap'>" +
+                        "<div class='flex flex-wrap my-auto mb-6'>" +
+                        "<div class='w-full'>" +
+                        "<input class='prediction_incomes' id='incomes" + i + "'" + "style='border: 3px solid gray !important;' type='number' required name='income_" + i + "'>" +
+                        "</div>" +
+                        "</div>" +
+                        "</td>" +
+                        "<td class='py-4 whitespace-nowrap text-sm text-gray-500'>" +
+                        "<div class='flex flex-wrap my-auto mb-6'>" +
+                        "<div class='w-full px-3'>" +
+                        "<input class='prediction_expenses' id='expenses" + i + "'" + "style='border: 3px solid gray !important;' type='number' required name='expense_" + i + "'>" +
+                        "</div>" +
+                        "</div>" +
+                        "</td>" +
+                        "</tr>"
+                    $("#Expenses_Table").append(row);
+                    if (parseInt(month) == 12) {
+                        year = (parseInt(year)+1)
                     }
+                }
+                $('#prediction-form form').append(
+                    '<div class="d-grid gap-2 d-md-flex justify-content-md-end">' +
+                    '<button id="prediction-submit" type="submit" class="mt-3 btn btn-success">Submit</button>' +
+                    '</div>'
+                )
+            }
             // return months <= 0 ? 0 : months;
         });
     </script>
     <script>
-        $('#prediction-submit').click(function(){
-            $('#prediction_incomes').each(function(input){
+        $('#prediction-submit').click(function () {
+            $('#prediction_incomes').each(function (input) {
                 var value = $(input).value();
                 var id = $(input).attr('id');
                 console.log('id: ' + id + ' value:' + value);
@@ -248,80 +271,88 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+<<<<<<< HEAD
         var json_output_labels = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
         var json_output_values = JSON.parse({{json_output.values}})
+=======
+        var json_output_labels = ['July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+        var json_output_values = [500, 543, 520, 480, 678, 288, 440, 620, 450, 400, 670, 500]
+>>>>>>> 21004732bb03f08de4c396dbb72d76ddf76cf0bb
 
         const barConfig = {
-        type: 'line',
-        data: {
-            labels:json_output_labels,
-            datasets: [
-            {
-                label: 'Sales($)',
-                backgroundColor: '#0694a2',
-                // borderColor: window.chartColors.red,
-                borderWidth: 3,
-                data:json_output_values
+            type: 'line',
+            data: {
+                labels: json_output_labels,
+                datasets: [
+                    {
+                        label: 'Sales($)',
+                        backgroundColor: '#0694a2',
+                        // borderColor: window.chartColors.red,
+                        borderWidth: 3,
+                        data: json_output_values
+                    },
+                ],
             },
-            ],
-        },
-        options: {
-            responsive: true,
-            legend: {
-            display: false,
+            options: {
+                responsive: true,
+                legend: {
+                    display: false,
+                },
             },
-        },
         }
         const barsCtx = document.getElementById('myChart')
         window.myBar = new Chart(barsCtx, barConfig)
-        </script>
+    </script>
 
-        <script>
-            $(document).ready(function(){
-                $('#showApplication').click(function() {
-                  $('#application').toggle("slide");
-                });
+    <script>
+        $(document).ready(function () {
+            $('#showApplication').click(function () {
+                $('#application').toggle("slide");
             });
-        </script>
+        });
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
     <script>
-        $(document).ready(function() { 
-    
-        $('#prediction-form form').submit(function (event) {
-            event.preventDefault();
-        var bodyFormData = new FormData(this);
-        
+        $(document).ready(function () {
 
-        $.ajax({
+            $('#prediction-form form').submit(function (event) {
+                event.preventDefault();
+                var bodyFormData = new FormData(this);
+
+
+                $.ajax({
                     url: "/predict",
                     data: bodyFormData,
                     type: 'POST',
                     contentType: false,
                     processData: false,
-                    done: function (data) {console.log(data.values)}
+                    done: function (data) { console.log(data.values) }
                 });
             });
         });
     </script>
-    </body>
+</body>
 
 
-    <style>
+<style>
     body {
-      background-color: #D3D3D3;
+        background-color: #D3D3D3;
     }
+
     .w-100 {
         width: 100% !important;
         height: calc(92vh);
     }
-    label{
+
+    label {
         color: black;
     }
-    .logo-image{
+
+    .logo-image {
         width: 46px;
         height: 46px;
         border-radius: 50%;
-        overflow: hidden;   
+        overflow: hidden;
         margin-top: -6px;
     }
 
@@ -545,90 +576,92 @@
         object-fit: cover
     }
 
-    .loanProgress img{
+    .loanProgress img {
         width: 80px;
         margin-bottom: 20px;
     }
-/* 
+
+    /* 
     .loanProgress{
         margin: 300px auto;
     } */
 
-    .loanProgress ul{
+    .loanProgress ul {
         text-align: center;
     }
 
-    .loanProgress ul li{
+    .loanProgress ul li {
         display: inline-block !important;
         vertical-align: top;
         width: 200px;
     }
 
-    .loanProgress ul li .fa{
+    .loanProgress ul li .fa {
         background: #ccc;
-        width:16px;
-        height:16px;
-        color:#fff;
+        width: 16px;
+        height: 16px;
+        color: #fff;
         border-radius: 50%;
         padding: 5px;
     }
 
-    .loanProgress ul li .fa::after{
-        content:'';
-        background:#ccc;
-        height:5px;
-        width:200px;
-        display:block;
-        left:0;
-        top:110px;
-        z-index:-1;
+    .loanProgress ul li .fa::after {
+        content: '';
+        background: #ccc;
+        height: 5px;
+        width: 200px;
+        display: block;
+        left: 0;
+        top: 110px;
+        z-index: -1;
     }
 
-    .loanProgress ul li:nth-child(3) .fa{
-        background:#148e14;
+    .loanProgress ul li:nth-child(3) .fa {
+        background: #148e14;
     }
 
-    .loanProgress ul li:nth-child(3) .fa::after{
-        width:0px !important;
-        background:#148e14;
+    .loanProgress ul li:nth-child(3) .fa::after {
+        width: 0px !important;
+        background: #148e14;
     }
 
     .loanProgress ul li:nth-child(1) .fa,
-    .loanProgress ul li:nth-child(2) .fa
-    {
-        background:#60aa97;
+    .loanProgress ul li:nth-child(2) .fa {
+        background: #60aa97;
     }
 
     .loanProgress ul li:nth-child(1) .fa::after,
-    .loanProgress ul li:nth-child(2) .fa::after
-    {
-        background:#60aa97;
+    .loanProgress ul li:nth-child(2) .fa::after {
+        background: #60aa97;
     }
 
-    .loanProgress ul li:first-child .fa::after{
+    .loanProgress ul li:first-child .fa::after {
         /* width:105px; */
-        left:100px
+        left: 100px
     }
 
-    .loanProgress ul li:last-child .fa::after{
-        width:105px;
-        
+    .loanProgress ul li:last-child .fa::after {
+        width: 105px;
+
     }
 
-    .emp-profile{
+    .emp-profile {
         padding: 3%;
         margin-top: 3%;
         margin-bottom: 3%;
         border-radius: 0.5rem;
         background: #fff;
     }
-    .profile-img{
+
+    .profile-img {
         text-align: center;
     }
-    .profile-img img{
+
+    .profile-img img {
         width: 70%;
         height: 100%;
     }
+
     .profile-img .file {
         position: relative;
         overflow: hidden;
@@ -639,19 +672,23 @@
         font-size: 15px;
         background: #212529b8;
     }
+
     .profile-img .file input {
         position: absolute;
         opacity: 0;
         right: 0;
         top: 0;
     }
-    .profile-head h5{
+
+    .profile-head h5 {
         color: #333;
     }
-    .profile-head h6{
+
+    .profile-head h6 {
         color: #0062cc;
     }
-    .profile-edit-btn{
+
+    .profile-edit-btn {
         border: none;
         border-radius: 1.5rem;
         width: 70%;
@@ -660,54 +697,64 @@
         color: #6c757d;
         cursor: pointer;
     }
-    .proile-rating{
+
+    .proile-rating {
         font-size: 12px;
         color: #818182;
         margin-top: 5%;
     }
-    .proile-rating span{
+
+    .proile-rating span {
         color: #495057;
         font-size: 15px;
         font-weight: 600;
     }
-    .profile-head .nav-tabs{
-        margin-bottom:5%;
+
+    .profile-head .nav-tabs {
+        margin-bottom: 5%;
     }
-    .profile-head .nav-tabs .nav-link{
-        font-weight:600;
+
+    .profile-head .nav-tabs .nav-link {
+        font-weight: 600;
         border: none;
     }
-    .profile-head .nav-tabs .nav-link.active{
+
+    .profile-head .nav-tabs .nav-link.active {
         border: none;
-        border-bottom:2px solid #0062cc;
+        border-bottom: 2px solid #0062cc;
     }
-    .profile-work{
+
+    .profile-work {
         padding: 14%;
         margin-top: -15%;
     }
-    .profile-work p{
+
+    .profile-work p {
         font-size: 12px;
         color: #818182;
         font-weight: 600;
         margin-top: 10%;
     }
-    .profile-work a{
+
+    .profile-work a {
         text-decoration: none;
         color: #495057;
         font-weight: 600;
         font-size: 14px;
     }
-    .profile-work ul{
+
+    .profile-work ul {
         list-style: none;
     }
-    .profile-tab label{
+
+    .profile-tab label {
         font-weight: 600;
     }
-    .profile-tab p{
+
+    .profile-tab p {
         font-weight: 600;
         color: #0062cc;
     }
+</style>
 
-    
-    </style>
 </html>
