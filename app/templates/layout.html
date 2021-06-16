@@ -220,7 +220,7 @@
                     month = ((parseInt(startMonth) + parseInt(i)) % 12 + 1);
                     if (month < 10) {
                         month = "0" + month.toString()
-                    } 
+                    }
 
                     var row =
                         "<tr>" +
@@ -232,7 +232,7 @@
                         "<td class='px-6 py-4 whitespace-nowrap'>" +
                         "<div class='flex flex-wrap my-auto mb-6'>" +
                         "<div class='w-full'>" +
-                        "<input class='prediction_incomes' id='incomes" + i + "'" + "style='border: 3px solid gray !important;' type='number' required name='income_" + i + "'>" +
+                        "<input class='prediction_incomes' id='incomes" + i + "'" + "style='border: 3px solid gray !important;' type='number' required name='income'>" +
                         "</div>" +
                         "</div>" +
                         "</td>" +
@@ -246,7 +246,7 @@
                         "</tr>"
                     $("#Expenses_Table").append(row);
                     if (parseInt(month) == 12) {
-                        year = (parseInt(year)+1)
+                        year = (parseInt(year) + 1)
                     }
                 }
                 $('#prediction-form form').append(
@@ -271,37 +271,20 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-<<<<<<< HEAD
-        var json_output_labels = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-        var json_output_values = JSON.parse({{json_output.values}})
-=======
+        function macroCallBack(str) {
+            obj = JSON.parse(str)
+
+            for (var i = 0; i < obj.length; i++) {
+                console.log(obj[i]);
+            }
+        }
+        macroCallBack(json_output.labels);
+
         var json_output_labels = ['July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
         var json_output_values = [500, 543, 520, 480, 678, 288, 440, 620, 450, 400, 670, 500]
->>>>>>> 21004732bb03f08de4c396dbb72d76ddf76cf0bb
+        var json_output = JSON.parse({{ json_output.labels }})
+        console.log(json_output)
 
-        const barConfig = {
-            type: 'line',
-            data: {
-                labels: json_output_labels,
-                datasets: [
-                    {
-                        label: 'Sales($)',
-                        backgroundColor: '#0694a2',
-                        // borderColor: window.chartColors.red,
-                        borderWidth: 3,
-                        data: json_output_values
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    display: false,
-                },
-            },
-        }
-        const barsCtx = document.getElementById('myChart')
-        window.myBar = new Chart(barsCtx, barConfig)
     </script>
 
     <script>
@@ -314,11 +297,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
     <script>
         $(document).ready(function () {
-
             $('#prediction-form form').submit(function (event) {
                 event.preventDefault();
                 var bodyFormData = new FormData(this);
-
 
                 $.ajax({
                     url: "/predict",
@@ -326,7 +307,31 @@
                     type: 'POST',
                     contentType: false,
                     processData: false,
-                    done: function (data) { console.log(data.values) }
+                    success: function (response) {
+                        const barConfig = {
+                            type: 'line',
+                            data: {
+                                labels: response.labels,
+                                datasets: [
+                                    {
+                                        label: 'Sales($)',
+                                        backgroundColor: '#0694a2',
+                                        // borderColor: window.chartColors.red,
+                                        borderWidth: 3,
+                                        data: response.values
+                                    },
+                                ],
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                            },
+                        }
+                        const barsCtx = document.getElementById('myChart')
+                        window.myBar = new Chart(barsCtx, barConfig)
+                    }
                 });
             });
         });

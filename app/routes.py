@@ -104,6 +104,7 @@ def main_page():
         "values": values_list
     }
 
+
     today_date = datetime.now()
 
     # press submit button
@@ -116,21 +117,8 @@ def main_page():
         for i in range(int(len(response)/2)):
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
-<<<<<<< HEAD
-    flash(values_list)
-    return render_template('main.html', form = form,json_output=json_output)
-
-    # fetch sales from rds
-    # all_sales = Sales.query.filter_by(application_id = 1).all()
-    # sales_entry = {}
-    # for sales in all_sales:
-    #     month_year = '{:02d}/{}'.format(sales.month, sales.year)
-    #     sales_entry[month_year] = sales.sales, 
-        
-    # return render_template('main.html',form = form, json_output=json_output)
-=======
             
-    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
+    return render_template('main.html', form = form, json_output=json_output, today_date = today_date, labels=label_list)
 
     # fetch all profit from rds
     all_sales = Sales.query.filter_by(application_id = 1).all()
@@ -140,7 +128,6 @@ def main_page():
         sales_entry[month_year] = sales.sales, 
         
     return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
->>>>>>> 21004732bb03f08de4c396dbb72d76ddf76cf0bb
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
@@ -205,16 +192,16 @@ def predict():
 #    final_features = [np.array(int_features)] 
     #dummy data
     # if request.method == "POST":
-        # todo = jsonify(request.form)
-        # print(todo)
+    todo = type(request.form.getlist('income'))
     arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
     df = pd.DataFrame(arr)
     output = model.model_prediction(df)
     #Read from database
     label_list = ['12/2021','01/2022','02/2022','03/2022','04/2022','05/2022','06/2022','07/2022','08/2022','09/2022','10/2022','11/2022']
-    values_list = json.dumps(output.tolist())
+    values_list = output.tolist()
     json_output = {
         "labels": label_list,
-        "values": values_list
+        "values": values_list,
+        'todo':todo
     }
-    return jsonify(request.form)
+    return jsonify(json_output)
