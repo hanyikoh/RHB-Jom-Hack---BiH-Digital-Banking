@@ -249,7 +249,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var json_output_labels = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-        var json_output_values = [500,543,520,480,678,288,440,620,450,400,670,500]
+        var json_output_values = JSON.parse({{json_output.values}})
 
         const barConfig = {
         type: 'line',

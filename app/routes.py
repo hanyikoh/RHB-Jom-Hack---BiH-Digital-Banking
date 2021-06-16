@@ -96,10 +96,10 @@ def main_page():
     output = model.model_prediction(df)
     #Read from database
     label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-    values_list = json.dumps(output.tolist())
+    values_list =output.tolist()
     json_output = {
         "labels": label_list,
-        "values": literal_eval(values_list)
+        "values": values_list
     }
 
     if request.method == "POST":
@@ -111,17 +111,17 @@ def main_page():
         for i in range(int(len(response)/2)):
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
-            
+    flash(values_list)
     return render_template('main.html', form = form,json_output=json_output)
 
     # fetch sales from rds
-    all_sales = Sales.query.filter_by(application_id = 1).all()
-    sales_entry = {}
-    for sales in all_sales:
-        month_year = '{:02d}/{}'.format(sales.month, sales.year)
-        sales_entry[month_year] = sales.sales, 
+    # all_sales = Sales.query.filter_by(application_id = 1).all()
+    # sales_entry = {}
+    # for sales in all_sales:
+    #     month_year = '{:02d}/{}'.format(sales.month, sales.year)
+    #     sales_entry[month_year] = sales.sales, 
         
-    return render_template('main.html',form = form, json_output=json_output)
+    # return render_template('main.html',form = form, json_output=json_output)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
