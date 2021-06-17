@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, redirect, url_for, flash, request, session, jsonify
-from app.forms import LoginForm, RegisterForm, CompanyDetailForm,StrategyForm
+from app.forms import LoginForm, RegisterForm, CompanyDetailForm,StrategyForm,BankLoanPackage
 from app.models import User, Company, BankLoanApplication, Sales
 from flask_login import login_user, logout_user, login_required, current_user
 import json
@@ -92,6 +92,7 @@ def logout():
 def main_page():
     session['logged_in'] = True
     form = CompanyDetailForm()
+    form_package = BankLoanPackage()
     
     arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
     df = pd.DataFrame(arr)
@@ -117,7 +118,7 @@ def main_page():
             profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
             flash(f"profit for month {i} is {profit}")
             
-    return render_template('main.html', form = form, json_output=json_output, today_date = today_date, labels=label_list)
+    return render_template('main.html', form = form, form_package = form_package, json_output=json_output, today_date = today_date, labels=label_list)
 
     # fetch all profit from rds
     all_sales = Sales.query.filter_by(application_id = 1).all()

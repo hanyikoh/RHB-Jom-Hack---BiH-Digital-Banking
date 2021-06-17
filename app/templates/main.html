@@ -405,12 +405,87 @@ justify-content: space-between;" x-data="{
                                     <div class="form-card">
                                         <div class="row">
                                             <div class="col-7">
-                                                <h2 class="fs-title">Choose your loan package</h2>
+                                                <h2 class="fs-title">Please choose your loan package</h2>
                                             </div>
                                             <div class="col-5">
                                                 <h2 class="steps">Step 4 - 5</h2>
                                             </div>
-                                        </div> 
+                                            <div class="col-md-12 mb-3">
+                                                {{ form_package.loanType.label(class="float-left") }}
+
+                                                <select type="select" class="form-select form-select-lg mb-3 w-full"
+                                                    aria-label=".form-select-lg" onchange="showDiv(this)">
+
+                                                    <option selected>Loan Packages</option>
+                                                    <option value="1">Short Term</option>
+                                                    <option value="2">Long Term</option>
+
+                                                </select>
+
+                                                <div id="hidden_div1" style="display:none;">
+                                                    <div class="testimonial-item">
+                                                        <div class="inner-content">
+                                                            <h3>Benefits:</h3>
+                                                            <br>
+                                                            <div class="icon" style=" font-size: 50px;
+                                                                 display: flex;justify-content: left">
+                                                                <i class="fa fa-money" aria-hidden="true"></i>
+                                                            </div>
+                                                            <h5>20% Cash Back on interest</h5>
+                                                            <div class="icon" style=" font-size: 50px;
+                                                                 display: flex;justify-content: left">
+                                                                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                                            </div>
+                                                            <h5>Financing of up to RM2 million</h5>
+                                                            <br><br>
+                                                            <h3>Eligibility Requirements:</h3>
+                                                            <br>
+                                                            <div class="icon" style=" font-size: 20px;
+                                                            display: flex;justify-content: left">
+                                                                <i class="fa fa-check" aria-hidden="true"> Locally incorporated businesses that have been registered in Malaysia.</i>
+                                                            </div>
+                                                            <br>
+                                                            <div class="icon" style=" font-size: 20px;
+                                                            display: flex;justify-content: left">
+                                                                <i class="fa fa-check" aria-hidden="true"> 
+                                                                    Sole proprietorship, partnership and private limited companies</i>
+                                                            </div>
+                                                            <br>
+                                                            <div class="icon" style=" font-size: 20px;
+                                                            display: flex;justify-content: left">
+                                                                <i class="fa fa-check" aria-hidden="true"> Companies that
+                                                                    have been operating for less than 3 years</i>
+                                                            </div>
+                                                            <br>
+                                                            <div class="icon" style=" font-size: 20px;
+                                                            display: flex;justify-content: left">
+                                                                <i class="fa fa-check" aria-hidden="true"> At least 50% of the business should 
+                                                                    be owned by the management team</i>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div id="hidden_div2" style="display:none;">Hello hidden content 2
+                                                </div>
+                                                <script type="text/javascript">
+                                                    function showDiv(select) {
+                                                        if (select.value == 1) {
+                                                            document.getElementById('hidden_div1').style.display = "block";
+                                                            document.getElementById('hidden_div2').style.display = "none";
+                                                        } else if (select.value == 2) {
+                                                            document.getElementById('hidden_div1').style.display = "none";
+                                                            document.getElementById('hidden_div2').style.display = "block";
+                                                        }
+                                                        else {
+                                                            document.getElementById('hidden_div1').style.display = "none";
+                                                            document.getElementById('hidden_div2').style.display = "none";
+                                                        }
+                                                    }
+                                                </script>
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <input type="button" name="next" class="next action-button" value="Submit" />
                                     <input type="button" name="previous" class="previous action-button-previous"
@@ -555,7 +630,7 @@ justify-content: space-between;" x-data="{
                             </div>
                         </div>
                     </div>
-                    
+
                     <br>
                     <hr>
                     <br>
@@ -567,7 +642,7 @@ justify-content: space-between;" x-data="{
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <label id="prediction-submit" class="mt-3 btn btn-primary">
                             Upload document <input type="file" hidden>
-                        </label>                        
+                        </label>
                     </div>
                 </div>
 

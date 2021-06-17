@@ -58,3 +58,6 @@ class StrategyForm(FlaskForm):
     problems = TextAreaField(label='What problems are you solving?', validators=[DataRequired()])
     benefit = TextAreaField(label='Who specifically will benefit from this (ICA/ICP)?', validators=[DataRequired()])
     solving = TextAreaField(label='How are you solving this/their problems?', validators=[DataRequired()])
+
+class BankLoanPackage(FlaskForm):
+    loanType = StringField(label='', validators=[DataRequired()])
