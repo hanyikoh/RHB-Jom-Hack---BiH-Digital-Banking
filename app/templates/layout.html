@@ -270,22 +270,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        function macroCallBack(str) {
-            obj = JSON.parse(str)
-
-            for (var i = 0; i < obj.length; i++) {
-                console.log(obj[i]);
-            }
-        }
-        macroCallBack(json_output.labels);
-
-        var json_output_labels = ['July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
-        var json_output_values = [500, 543, 520, 480, 678, 288, 440, 620, 450, 400, 670, 500]
-        var json_output = JSON.parse({{ json_output.labels }})
-        console.log(json_output)
-
-    </script>
 
     <script>
         $(document).ready(function () {

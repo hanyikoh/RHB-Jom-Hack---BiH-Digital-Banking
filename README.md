@@ -43,6 +43,7 @@ scipy
 statsmodels
 sklearn
 matplotlib
+xlrd
 ```
 
 To install a new package, make sure you are in the virtual environment.
