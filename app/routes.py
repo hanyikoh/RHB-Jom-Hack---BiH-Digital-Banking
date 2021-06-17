@@ -104,7 +104,6 @@ def main_page():
         "values": values_list
     }
 
-
     today_date = datetime.now()
 
     # press submit button
@@ -192,18 +191,21 @@ def predict():
 #    final_features = [np.array(int_features)] 
     #dummy data
     # if request.method == "POST":
-    test_list=[]
+    income = []
     for i in range(0, len(request.form.getlist('income'))):
-        test_list.append(int(request.form.getlist('income')[i]))
-    arr = np.array(test_list)
+        income.append(int(request.form.getlist('income')[i])-int(request.form.getlist('expense')[i]))
+        flash(request.form.getlist('dates'))
+
+    arr = np.array(income)
     df = pd.DataFrame(arr)
     output_sales = model.sales_prediction(df)
-    #Read from database
+
+    # read from database
     label_list = ['1','2','3','4','5','6','7','8','9','10','11','12']
     values_list = output_sales.tolist()
     json_output = {
         "labels": label_list,
         "values": values_list,
-        'todo':test_list
+        'todo':income
     }
     return jsonify(json_output)

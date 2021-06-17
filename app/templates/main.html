@@ -34,10 +34,10 @@ justify-content: space-between;" x-data="{
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside style="max-height: 100vh !important; position: sticky !important;" class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside style="max-height: 100vh !important; position: sticky !important;"
+        class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Sidebar -->
-        <div class="sidebar"  
-        style="height: 100vh;position: -webkit-sticky;position: sticky; top: 0;">
+        <div class="sidebar" style="height: 100vh;position: -webkit-sticky;position: sticky; top: 0;">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -84,7 +84,7 @@ justify-content: space-between;" x-data="{
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div style="margin-left: 0 !important;"class="content-wrapper w-full">
+    <div style="margin-left: 0 !important;" class="content-wrapper w-full">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -395,7 +395,7 @@ justify-content: space-between;" x-data="{
                                             </div>
                                         </div> <label class="fieldlabels">Upload Your Video:</label> <input type="file"
                                             name="pic" accept="image/*">
-                                    </div> 
+                                    </div>
                                     <input type="button" name="next" class="next action-button" value="Submit" />
                                     <input type="button" name="previous" class="previous action-button-previous"
                                         value="Previous" />
@@ -423,7 +423,7 @@ justify-content: space-between;" x-data="{
                                         </div>
                                     </div>
                                 </fieldset>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -435,7 +435,7 @@ justify-content: space-between;" x-data="{
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Expenses and Income</h1>
+                                <h1 class="m-0">Company Cashflow</h1>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
@@ -454,16 +454,17 @@ justify-content: space-between;" x-data="{
                         </div>
                         <div class="w-full md:w-1/4 px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Current Date
+                                Today's Date
                             </label>
                             <input
                                 class="appearance-none block mb-3 w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="currentDate" type="date" name="Next_Due_Date" disabled="true" value={{today_date}} required>
+                                id="currentDate" type="date" name="Next_Due_Date" disabled="true" value={{today_date}}
+                                required>
                         </div>
                     </div>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto" id="prediction-form">
-                            <form action="/predict" method="POST" enctype = "multipart/form-data">
+                            <form action="/predict" method="POST" enctype="multipart/form-data">
 
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
@@ -474,7 +475,7 @@ justify-content: space-between;" x-data="{
                                             </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Sales
+                                                Revenues
                                             </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -492,10 +493,11 @@ justify-content: space-between;" x-data="{
 
                         </div>
                     </div>
-                </div>
 
+                    <br>
+                    <hr>
+                    <br>
 
-                <div class="row">
                     <!-- <div class="grid gap-6 mb-8 md:grid-cols-2">
                       </div> -->
                     <div class="container">
@@ -536,6 +538,20 @@ justify-content: space-between;" x-data="{
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <br>
+                    <hr>
+                    <br>
+
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Upload Income Statement (Compulsary)
+                    </label>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <label id="prediction-submit" class="mt-3 btn btn-primary">
+                            Upload document <input type="file" hidden>
+                        </label>                        
                     </div>
                 </div>
 
