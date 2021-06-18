@@ -31,11 +31,11 @@
         {% if session['logged_in'] %}
         <!-- Logged in -->
         <a class="navbar-brand" style="text-shadow: 2px 8px #000000;" href="/main">
-            <img src="{{ url_for('static', filename='/icon/BiH-alternate.png') }}" class="img-fluid">
+            <img src="{{ url_for('static', filename='/icon/BiH.png') }}" class="img-fluid">
         </a>
         {% else %}
         <a class="navbar-brand" href="/">
-            <img src="{{ url_for('static', filename='/icon/BiH-alternate.png') }}" class="img-fluid">
+            <img src="{{ url_for('static', filename='/icon/BiH.png') }}" class="img-fluid">
         </a>
         {% endif %}
 
@@ -229,7 +229,7 @@
                         "<tr>" +
                         "<td class='px-6 py-4 whitespace-nowrap'>" +
                         "<div class='text-sm text-gray-500'>" +
-                        "<input id='date" + i + "'" + "value='" + month + "/" + year.toString() + "'" + "type='text' disabled placeholder='' name='dates'>" +
+                        "<input id='date" + i + "'" + "value='" + month + "/" + year.toString() + "'" + "type='text' readonly name='dates'>" +
                         "</div>" +
                         "</td>" +
                         "<td class='px-6 py-4 whitespace-nowrap'>" +
@@ -301,7 +301,7 @@
                                 labels: response.labels,
                                 datasets: [
                                     {
-                                        label: 'Sales($)',
+                                        label: 'Income($)',
                                         backgroundColor: '#0694a2',
                                         // borderColor: window.chartColors.red,
                                         borderWidth: 3,

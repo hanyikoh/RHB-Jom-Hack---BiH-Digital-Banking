@@ -8,7 +8,8 @@ import numpy as np
 import pandas as pd
 from app import model_arima as model
 from ast import literal_eval
-from datetime import datetime
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 @app.route('/')
 @app.route('/home')
@@ -16,12 +17,12 @@ def home_page():
     session['logged_in'] = False
     return render_template('home.html')
 
-#Contact Us Page
+# Contact Us Page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-#FAQ Page
+# FAQ Page
 @app.route('/faq')
 def faq():
     return render_template('faq.html')
@@ -38,6 +39,11 @@ def login_page():
 
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
+
+            # this session
+            session['logged_in'] = True
+            session['user_id'] = attempted_user.user_id
+            session['company_id'] = attempted_user.company_id
 
             # check is user is admin
             if attempted_user.is_admin:
@@ -56,8 +62,8 @@ def register_page():
     
     if form.validate_on_submit():
         user_to_create = User(username=form.username.data,
-                            email=form.email.data,
-                            generate_password=form.password.data)
+                              email=form.email.data,
+                              generate_password=form.password.data)
 
         try:
             db.session.add(user_to_create)
@@ -69,10 +75,17 @@ def register_page():
 
         login_user(user_to_create)
         flash(f"Account created successfully! You are now logged in as {user_to_create.username}", category='success')
+        
+        
+        # this session
         session['logged_in'] = True
-        return redirect(url_for('main_page'))
+        session['user_id'] = user_to_create.user_id
+        session['company_id'] = user_to_create.company_id
 
-    if form.errors != {}: #If there are not errors from the validations
+        return redirect(url_for('main_page'))
+    
+    # if there are not errors from the validations
+    if form.errors != {}: 
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
@@ -83,7 +96,11 @@ def register_page():
 # logging out of the app
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
+    
     session['logged_in'] = False
+    session['user_id'] = None
+    session['company_id'] = None
+
     flash("Logged out successfully.", category='info')
     return redirect(url_for('login_page'))
 
@@ -91,12 +108,14 @@ def logout():
 @app.route('/main', methods=['GET', 'POST'])
 def main_page():
     session['logged_in'] = True
+
     form = CompanyDetailForm()
     form_package = BankLoanPackage()
     
     arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
     df = pd.DataFrame(arr)
     output_sales = model.sales_prediction(df)
+
     #Read from database
     label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
     values_list =output_sales.tolist()
@@ -105,20 +124,30 @@ def main_page():
         "values": values_list
     }
 
-    today_date = datetime.now()
+    today = datetime.now()
 
     # press submit button
     if request.method == "POST":
-        flash(request.form)
+        income = []
+        label_list = []
+        for i in range(0, len(request.form.getlist('income'))):
+            income.append(int(request.form.getlist('income')[i])-int(request.form.getlist('expense')[i]))
+            label_list.append(request.form.getlist('dates')[i])
 
-        response = request.form.to_dict(flat=True)
-        flash(response)
+        arr = np.array(income)
+        df = pd.DataFrame(arr)
+        output_sales = model.sales_prediction(df)
 
-        for i in range(int(len(response)/2)):
-            profit = int(response.get(f'income_{i}')) - int(response.get(f'expense_{i}'))
-            flash(f"profit for month {i} is {profit}")
+        label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
+        values_list = output_sales.tolist()
+        json_output = {
+            "labels": label_list,
+            "values": values_list
+        }
+
+        return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
             
-    return render_template('main.html', form = form, form_package = form_package, json_output=json_output, today_date = today_date, labels=label_list)
+    return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
 
     # fetch all profit from rds
     all_sales = Sales.query.filter_by(application_id = 1).all()
@@ -127,7 +156,7 @@ def main_page():
         month_year = '{:02d}/{}'.format(sales.month, sales.year)
         sales_entry[month_year] = sales.sales, 
         
-    return render_template('main.html', form = form, json_output=json_output, today_date = today_date)
+    return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
@@ -186,27 +215,34 @@ def get_segment( request ):
 
 ## Model
 ## Getting input from the forms
-@app.route('/predict',methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-#   int_features = [int(x) for x in request.form.values()]
-#    final_features = [np.array(int_features)] 
-    #dummy data
-    # if request.method == "POST":
-    income = []
-    for i in range(0, len(request.form.getlist('income'))):
-        income.append(int(request.form.getlist('income')[i])-int(request.form.getlist('expense')[i]))
-        flash(request.form.getlist('dates'))
 
+    income = []
+    dates = []
+    for i in range(0, len(request.form.getlist('income'))):
+        income.append(float(request.form.getlist('income')[i])-float(request.form.getlist('expense')[i]))
+        dates.append(request.form.getlist('dates')[i])
+
+    # sales prediction using arima model
     arr = np.array(income)
     df = pd.DataFrame(arr)
     output_sales = model.sales_prediction(df)
 
-    # read from database
-    label_list = ['1','2','3','4','5','6','7','8','9','10','11','12']
+    # generating label
+    last_date = dates[len(dates)-1]
+    last_datetime = datetime.strptime(last_date, '%m/%Y')
+
+    for i in range(12):
+        next_month = last_datetime + relativedelta(months=i+1) 
+        dates.append(datetime.strftime(next_month, '%m/%Y'))
+
     values_list = output_sales.tolist()
+    income.extend(values_list)
+
     json_output = {
-        "labels": label_list,
-        "values": values_list,
-        'todo':income
+        "labels": dates,
+        "values": income
     }
+
     return jsonify(json_output)
