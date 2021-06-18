@@ -21,10 +21,13 @@
         integrity="sha512-zXhmHxwXn8kUvZApt3iuxFG7cAHa2wongnyRnq2uAxppI5t/J5pz7I0mrm409qZaAu4KLhRtFTaNhO86OWQv5A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    {% block head %}
+
+    {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary" style="background-color:#4286f4 !important">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary" style="padding: 5px !important; background-color:#4286f4 !important">
         {% if session['logged_in'] %}
         <!-- Logged in -->
         <a class="navbar-brand" href="/main">
