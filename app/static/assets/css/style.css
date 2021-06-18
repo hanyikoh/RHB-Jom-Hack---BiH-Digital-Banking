@@ -1412,7 +1412,9 @@ p {
   z-index: -1; }
 
 .footer-widget {
-  padding-top: 50px; }
+  padding-top: 25px; 
+  padding-bottom: 25px;
+}
 
 .footer-about .logo img {
   width: 160px; }
