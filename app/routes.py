@@ -107,56 +107,40 @@ def logout():
 # main page (after login)
 @app.route('/main', methods=['GET', 'POST'])
 def main_page():
+
     session['logged_in'] = True
 
     form = CompanyDetailForm()
     form_package = BankLoanPackage()
-    
-    arr = np.array([103, 85, 204, 333, 107,33,444,123,152,532,223,464])
-    df = pd.DataFrame(arr)
-    output_sales = model.sales_prediction(df)
-
-    #Read from database
-    label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-    values_list =output_sales.tolist()
-    json_output = {
-        "labels": label_list,
-        "values": values_list
-    }
-
     today = datetime.now()
 
-    # press submit button
-    if request.method == "POST":
-        income = []
-        label_list = []
-        for i in range(0, len(request.form.getlist('income'))):
-            income.append(int(request.form.getlist('income')[i])-int(request.form.getlist('expense')[i]))
-            label_list.append(request.form.getlist('dates')[i])
-
-        arr = np.array(income)
-        df = pd.DataFrame(arr)
-        output_sales = model.sales_prediction(df)
-
-        label_list = ['July','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun']
-        values_list = output_sales.tolist()
-        json_output = {
-            "labels": label_list,
-            "values": values_list
-        }
-
-        return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
-            
-    return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
-
-    # fetch all profit from rds
-    all_sales = Sales.query.filter_by(application_id = 1).all()
-    sales_entry = {}
-    for sales in all_sales:
-        month_year = '{:02d}/{}'.format(sales.month, sales.year)
-        sales_entry[month_year] = sales.sales, 
+    if request.method != "POST":
+        # read from database
+        user_id = session.get('user_id')
+        company_id = session.get('company_id')
         
-    return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=label_list)
+        if user_id is not None and company_id is not None:
+            application = BankLoanApplication.query.filter_by(user_id=user_id, company_id=company_id).first()
+
+            # fetch all profit from rds
+            all_profit = Sales.query.filter_by(application_id=application.application_id).all()
+            
+            profits = []
+            dates = []
+
+            for profit in all_profit:
+                profits.append(profit.sales)
+                dates.append('{:02d}/{}'.format(profit.month, profit.year))
+
+            flash(profits)
+            flash(dates)
+            
+            json_output = predict(profits, dates)    
+            flash(type(json_output))     
+
+            return render_template('main.html', form=form, form_package=form_package, json_output=json_output, today_date=today, labels=dates)
+            
+    return render_template('main.html', form=form, form_package=form_package, json_output=None, today_date=today, labels=None)
 
 # check available services
 @app.route('/main/service', methods=['GET', 'POST'])
@@ -216,19 +200,20 @@ def get_segment( request ):
 ## Model
 ## Getting input from the forms
 @app.route('/predict', methods=['POST'])
-def predict():
+def predict(income, dates):
 
-    income = []
-    dates = []
-    for i in range(0, len(request.form.getlist('income'))):
-        income.append(float(request.form.getlist('income')[i])-float(request.form.getlist('expense')[i]))
-        dates.append(request.form.getlist('dates')[i])
+    if request.method == "POST":
+        income = []
+        dates = []
+        for i in range(0, len(request.form.getlist('income'))):
+            income.append(float(request.form.getlist('income')[i])-float(request.form.getlist('expense')[i]))
+            dates.append(request.form.getlist('dates')[i])
 
     # sales prediction using arima model
     arr = np.array(income)
     df = pd.DataFrame(arr)
     output_sales = model.sales_prediction(df)
-
+    
     # generating label
     last_date = dates[len(dates)-1]
     last_datetime = datetime.strptime(last_date, '%m/%Y')
@@ -236,7 +221,7 @@ def predict():
     for i in range(12):
         next_month = last_datetime + relativedelta(months=i+1) 
         dates.append(datetime.strftime(next_month, '%m/%Y'))
-
+    
     values_list = output_sales.tolist()
     income.extend(values_list)
 
